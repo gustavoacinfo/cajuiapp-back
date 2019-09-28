@@ -9,12 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Gustavo
  */
 @Entity
+@Table(name="pessoa", schema="basico")
 public class Pessoa {
     
     @Id
