@@ -5,6 +5,7 @@
  */
 package com.br.ifnmg.cajuiapp.basico.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,35 +25,71 @@ public class Pessoa {
     private Integer id;
     
     private String email;
-    private String email_alternativo;
-    private String lattes; 
-    private Integer unidade_id;
+    
+    @Column(name="email_alternativo")
+    private String emailAlternativo;
+    
+    private String lattes;
+    
+    @Column(name="unidade_id")
+    private Integer unidadeId;
+    
     private String avatar;
     private String nome;
-    private String nome_social;
+    
+    @Column(name="nome_social")
+    private String nomeSocial;
+    
     private String sexo;
-    private String estado_civil;
-    private String data_nascimento;
-    private Integer cidade_id_nascimento;
+    
+    @Column(name="estado_civil")
+    private String estadoCivil;
+    
+    @Column(name="data_nascimento")
+    private String dataNascimento;
+    
+    @Column(name="cidade_id_nascimento")
+    private Integer cidadeIdNascimento;
+    
     private String nacionalidade;
-    private String nome_mae;
-    private String nome_pai;
-    private String data_falecimento;
+    
+    @Column(name="nome_mae")
+    private String nomeMae;
+    
+    @Column(name="nome_pai")
+    private String nomePai;
+    
+    @Column(name="data_falecimento")
+    private String dataFalecimento;
+    
     private String cpf;
     private String rg;
-    private String rg_emissor;
-    private String rg_data;
+    
+    @Column(name="rg_emissor")
+    private String rgEmissor;
+    
+    @Column(name="rg_data")
+    private String rgData;
+    
     private String cep;
-    private Integer cidade_id_endereco;
+    
+    @Column(name="cidade_id_endereco")
+    private Integer cidadeIdEndereco;
+    
     private String logradouro;
     private String numero; 
     private String complemento;
     private String bairro;
     private String telefone;
-    private Integer created_at;
-    private Integer updated_at;
-    private Integer created_by;
-    private Integer updated_by;
+    
+    @Column(name="created_at")
+    private Integer createdAt;
+    @Column(name="updated_at")
+    private Integer updatedAt;
+    @Column(name="created_by")
+    private Integer createdBy;
+    @Column(name="updated_by")
+    private Integer updatedBy;
     
     private String imagemUrl;
     private String avatarUrl;
@@ -66,6 +103,7 @@ public class Pessoa {
 //    private Colaborador colaborador;
 //    private PessoaUnidade[] pessoaUnidades;
 //    private Unidade[] unidades;
+
 
     public Integer getId() {
         return id;
@@ -83,12 +121,12 @@ public class Pessoa {
         this.email = email;
     }
 
-    public String getEmail_alternativo() {
-        return email_alternativo;
+    public String getEmailAlternativo() {
+        return emailAlternativo;
     }
 
-    public void setEmail_alternativo(String email_alternativo) {
-        this.email_alternativo = email_alternativo;
+    public void setEmailAlternativo(String emailAlternativo) {
+        this.emailAlternativo = emailAlternativo;
     }
 
     public String getLattes() {
@@ -99,12 +137,12 @@ public class Pessoa {
         this.lattes = lattes;
     }
 
-    public Integer getUnidade_id() {
-        return unidade_id;
+    public Integer getUnidadeId() {
+        return unidadeId;
     }
 
-    public void setUnidade_id(Integer unidade_id) {
-        this.unidade_id = unidade_id;
+    public void setUnidadeId(Integer unidadeId) {
+        this.unidadeId = unidadeId;
     }
 
     public String getAvatar() {
@@ -123,12 +161,12 @@ public class Pessoa {
         this.nome = nome;
     }
 
-    public String getNome_social() {
-        return nome_social;
+    public String getNomeSocial() {
+        return nomeSocial;
     }
 
-    public void setNome_social(String nome_social) {
-        this.nome_social = nome_social;
+    public void setNomeSocial(String nomeSocial) {
+        this.nomeSocial = nomeSocial;
     }
 
     public String getSexo() {
@@ -139,28 +177,28 @@ public class Pessoa {
         this.sexo = sexo;
     }
 
-    public String getEstado_civil() {
-        return estado_civil;
+    public String getEstadoCivil() {
+        return estadoCivil;
     }
 
-    public void setEstado_civil(String estado_civil) {
-        this.estado_civil = estado_civil;
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
     }
 
-    public String getData_nascimento() {
-        return data_nascimento;
+    public String getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setData_nascimento(String data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public Integer getCidade_id_nascimento() {
-        return cidade_id_nascimento;
+    public Integer getCidadeIdNascimento() {
+        return cidadeIdNascimento;
     }
 
-    public void setCidade_id_nascimento(Integer cidade_id_nascimento) {
-        this.cidade_id_nascimento = cidade_id_nascimento;
+    public void setCidadeIdNascimento(Integer cidadeIdNascimento) {
+        this.cidadeIdNascimento = cidadeIdNascimento;
     }
 
     public String getNacionalidade() {
@@ -171,28 +209,28 @@ public class Pessoa {
         this.nacionalidade = nacionalidade;
     }
 
-    public String getNome_mae() {
-        return nome_mae;
+    public String getNomeMae() {
+        return nomeMae;
     }
 
-    public void setNome_mae(String nome_mae) {
-        this.nome_mae = nome_mae;
+    public void setNomeMae(String nomeMae) {
+        this.nomeMae = nomeMae;
     }
 
-    public String getNome_pai() {
-        return nome_pai;
+    public String getNomePai() {
+        return nomePai;
     }
 
-    public void setNome_pai(String nome_pai) {
-        this.nome_pai = nome_pai;
+    public void setNomePai(String nomePai) {
+        this.nomePai = nomePai;
     }
 
-    public String getData_falecimento() {
-        return data_falecimento;
+    public String getDataFalecimento() {
+        return dataFalecimento;
     }
 
-    public void setData_falecimento(String data_falecimento) {
-        this.data_falecimento = data_falecimento;
+    public void setDataFalecimento(String dataFalecimento) {
+        this.dataFalecimento = dataFalecimento;
     }
 
     public String getCpf() {
@@ -211,20 +249,20 @@ public class Pessoa {
         this.rg = rg;
     }
 
-    public String getRg_emissor() {
-        return rg_emissor;
+    public String getRgEmissor() {
+        return rgEmissor;
     }
 
-    public void setRg_emissor(String rg_emissor) {
-        this.rg_emissor = rg_emissor;
+    public void setRgEmissor(String rgEmissor) {
+        this.rgEmissor = rgEmissor;
     }
 
-    public String getRg_data() {
-        return rg_data;
+    public String getRgData() {
+        return rgData;
     }
 
-    public void setRg_data(String rg_data) {
-        this.rg_data = rg_data;
+    public void setRgData(String rgData) {
+        this.rgData = rgData;
     }
 
     public String getCep() {
@@ -235,12 +273,12 @@ public class Pessoa {
         this.cep = cep;
     }
 
-    public Integer getCidade_id_endereco() {
-        return cidade_id_endereco;
+    public Integer getCidadeIdEndereco() {
+        return cidadeIdEndereco;
     }
 
-    public void setCidade_id_endereco(Integer cidade_id_endereco) {
-        this.cidade_id_endereco = cidade_id_endereco;
+    public void setCidadeIdEndereco(Integer cidadeIdEndereco) {
+        this.cidadeIdEndereco = cidadeIdEndereco;
     }
 
     public String getLogradouro() {
@@ -283,36 +321,36 @@ public class Pessoa {
         this.telefone = telefone;
     }
 
-    public Integer getCreated_at() {
-        return created_at;
+    public Integer getCreatedAt() {
+        return createdAt;
     }
 
-    public void setCreated_at(Integer created_at) {
-        this.created_at = created_at;
+    public void setCreatedAt(Integer createdAt) {
+        this.createdAt = createdAt;
     }
 
-    public Integer getUpdated_at() {
-        return updated_at;
+    public Integer getUpdatedAt() {
+        return updatedAt;
     }
 
-    public void setUpdated_at(Integer updated_at) {
-        this.updated_at = updated_at;
+    public void setUpdatedAt(Integer updatedAt) {
+        this.updatedAt = updatedAt;
     }
 
-    public Integer getCreated_by() {
-        return created_by;
+    public Integer getCreatedBy() {
+        return createdBy;
     }
 
-    public void setCreated_by(Integer created_by) {
-        this.created_by = created_by;
+    public void setCreatedBy(Integer createdBy) {
+        this.createdBy = createdBy;
     }
 
-    public Integer getUpdated_by() {
-        return updated_by;
+    public Integer getUpdatedBy() {
+        return updatedBy;
     }
 
-    public void setUpdated_by(Integer updated_by) {
-        this.updated_by = updated_by;
+    public void setUpdatedBy(Integer updatedBy) {
+        this.updatedBy = updatedBy;
     }
 
     public String getImagemUrl() {
@@ -330,8 +368,8 @@ public class Pessoa {
     public void setAvatarUrl(String avatarUrl) {
         this.avatarUrl = avatarUrl;
     }
-
-//    public Cidade getCidadeNascimento() {
+    
+    //    public Cidade getCidadeNascimento() {
 //        return cidadeNascimento;
 //    }
 //
@@ -410,7 +448,5 @@ public class Pessoa {
 //    public void setUnidades(Unidade[] unidades) {
 //        this.unidades = unidades;
 //    }
-    
-    
     
 }
