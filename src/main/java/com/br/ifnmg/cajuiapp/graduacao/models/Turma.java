@@ -5,6 +5,7 @@
  */
 package com.br.ifnmg.cajuiapp.graduacao.models;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="turma", schema="graduacao")
-public class Turma {
+public class Turma implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
