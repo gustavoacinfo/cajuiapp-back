@@ -76,5 +76,135 @@ public class OcorrenciaCurso implements Serializable {
 // * @property PeriodoLetivo[] $periodoLetivos
 // * @property User $updatedBy
 // * @property User $createdBy
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getCursoId() {
+        return cursoId;
+    }
+
+    public void setCursoId(Integer cursoId) {
+        this.cursoId = cursoId;
+    }
+
+    public Integer getVersaoCurso() {
+        return versaoCurso;
+    }
+
+    public void setVersaoCurso(Integer versaoCurso) {
+        this.versaoCurso = versaoCurso;
+    }
+
+    public Integer getUnidadeId() {
+        return unidadeId;
+    }
+
+    public void setUnidadeId(Integer unidadeId) {
+        this.unidadeId = unidadeId;
+    }
+
+    public Integer getPeriodoTotal() {
+        return periodoTotal;
+    }
+
+    public void setPeriodoTotal(Integer periodoTotal) {
+        this.periodoTotal = periodoTotal;
+    }
+
+    public double getCargaHoraria() {
+        return cargaHoraria;
+    }
+
+    public void setCargaHoraria(double cargaHoraria) {
+        this.cargaHoraria = cargaHoraria;
+    }
+
+    public boolean isFechado() {
+        return fechado;
+    }
+
+    public void setFechado(boolean fechado) {
+        this.fechado = fechado;
+    }
+
+    public double getMinTempoConclusao() {
+        return minTempoConclusao;
+    }
+
+    public void setMinTempoConclusao(double minTempoConclusao) {
+        this.minTempoConclusao = minTempoConclusao;
+    }
+
+    public double getMaxTempoConclusao() {
+        return maxTempoConclusao;
+    }
+
+    public void setMaxTempoConclusao(double maxTempoConclusao) {
+        this.maxTempoConclusao = maxTempoConclusao;
+    }
+
+    public String getDataAutorizacao() {
+        return dataAutorizacao;
+    }
+
+    public void setDataAutorizacao(String dataAutorizacao) {
+        this.dataAutorizacao = dataAutorizacao;
+    }
+
+    public String getDocAutorizacao() {
+        return docAutorizacao;
+    }
+
+    public void setDocAutorizacao(String docAutorizacao) {
+        this.docAutorizacao = docAutorizacao;
+    }
+
+    public String getModalidade() {
+        return modalidade;
+    }
+
+    public void setModalidade(String modalidade) {
+        this.modalidade = modalidade;
+    }
+
+    public Integer getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Integer createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Integer getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Integer updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Integer createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Integer getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Integer updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+    
+    
     
 }
