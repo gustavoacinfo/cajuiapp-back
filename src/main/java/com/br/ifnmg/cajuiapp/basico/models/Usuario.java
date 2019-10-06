@@ -5,12 +5,15 @@
  */
 package com.br.ifnmg.cajuiapp.basico.models;
 
+
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 /**
@@ -19,8 +22,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="user", schema="basico")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable{
-    
+  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -34,13 +38,6 @@ public class Usuario implements Serializable{
     
     @Column(name = "password_reset_token")
     private String passwordResetToken;
-    
-    @Column(name="created_at")
-    private Integer createdAt;
-    @Column(name="updated_at")
-    private Integer updatedAt;
-    
-    //private Pessoa pessoa;
 
     public Integer getId() {
         return id;
@@ -49,7 +46,7 @@ public class Usuario implements Serializable{
     public void setId(Integer id) {
         this.id = id;
     }
-
+    
     public String getUsername() {
         return username;
     }
@@ -88,22 +85,6 @@ public class Usuario implements Serializable{
 
     public void setPasswordResetToken(String passwordResetToken) {
         this.passwordResetToken = passwordResetToken;
-    }
-
-    public Integer getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Integer createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Integer getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Integer updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
 //    public Pessoa getPessoa() {

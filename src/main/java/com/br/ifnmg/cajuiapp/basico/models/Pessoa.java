@@ -5,14 +5,11 @@
  */
 package com.br.ifnmg.cajuiapp.basico.models;
 
-import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /**
@@ -21,12 +18,9 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="pessoa", schema="basico")
-public class Pessoa  implements Serializable {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    
+@PrimaryKeyJoinColumn(name="id")
+public class Pessoa extends Usuario {
+   
     private String email;
     
     @Column(name="email_alternativo")
@@ -110,14 +104,6 @@ public class Pessoa  implements Serializable {
 //    private PessoaUnidade[] pessoaUnidades;
 //    private Unidade[] unidades;
 
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getEmail() {
         return email;
