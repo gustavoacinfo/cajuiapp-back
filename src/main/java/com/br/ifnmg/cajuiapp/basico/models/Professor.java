@@ -27,7 +27,6 @@ public class Professor implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @OneToOne(cascade = CascadeType.ALL)
     private Pessoa pessoa;
     
     @Column(name="created_at")
