@@ -34,8 +34,9 @@ public class Pessoa  implements Serializable {
     
     private String lattes;
     
-    @Column(name="unidade_id")
-    private Integer unidadeId;
+    @OneToOne
+    @JoinColumn(name="unidade_id")
+    private Unidade unidadeId;
     
     private String avatar;
     private String nome;
@@ -142,11 +143,11 @@ public class Pessoa  implements Serializable {
         this.lattes = lattes;
     }
 
-    public Integer getUnidadeId() {
+    public Unidade getUnidadeId() {
         return unidadeId;
     }
 
-    public void setUnidadeId(Integer unidadeId) {
+    public void setUnidadeId(Unidade unidadeId) {
         this.unidadeId = unidadeId;
     }
 
