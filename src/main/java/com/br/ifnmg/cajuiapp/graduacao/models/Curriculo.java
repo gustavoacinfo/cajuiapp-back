@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,14 +27,18 @@ public class Curriculo implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "ocorrencia_curso_id")
-    private Integer ocorrenciaCursoId;
+    @OneToOne
+    @JoinColumn(name = "ocorrencia_curso_id")
+    private OcorrenciaCurso ocorrenciaCursoId;
     
-    @Column(name = "disciplina_id")
-    private Integer disciplinaId;
+    @OneToOne
+    @JoinColumn(name = "disciplina_id")
+    private Disciplina disciplinaId;
     
     @Column(name = "tipo_disciplina")
     private String tipoDisciplina;
+    
+    //Verificar se esse atributo é referente á classe PeriodoLetivo
     
     @Column(name = "periodo_curriculo")
     private Integer periodoCurriculo;
@@ -68,19 +74,19 @@ public class Curriculo implements Serializable{
         this.id = id;
     }
 
-    public Integer getOcorrenciaCursoId() {
+    public OcorrenciaCurso getOcorrenciaCursoId() {
         return ocorrenciaCursoId;
     }
 
-    public void setOcorrenciaCursoId(Integer ocorrenciaCursoId) {
+    public void setOcorrenciaCursoId(OcorrenciaCurso ocorrenciaCursoId) {
         this.ocorrenciaCursoId = ocorrenciaCursoId;
     }
-
-    public Integer getDisciplinaId() {
+    
+    public Disciplina getDisciplinaId() {
         return disciplinaId;
     }
 
-    public void setDisciplinaId(Integer disciplinaId) {
+    public void setDisciplinaId(Disciplina disciplinaId) {
         this.disciplinaId = disciplinaId;
     }
 
