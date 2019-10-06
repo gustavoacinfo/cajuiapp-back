@@ -6,13 +6,11 @@
 package com.br.ifnmg.cajuiapp.basico.models;
 
 import java.io.Serializable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -50,9 +48,6 @@ public class Aluno  implements Serializable{
     @Column(name="updated_by")
     private Integer updatedBy;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    private Pessoa pessoa;
-
     public Integer getId() {
         return id;
     }
@@ -99,14 +94,6 @@ public class Aluno  implements Serializable{
 
     public void setObs(String obs) {
         this.obs = obs;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
     }
 
     public Integer getCreatedAt() {

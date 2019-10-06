@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,8 +27,9 @@ public class Cidade implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "estado_id")
-    private Integer estadoId;
+    @ManyToOne
+    @JoinColumn(name = "estado_id")
+    private Estado estadoId;
     
     private String nome;
     
@@ -43,11 +46,11 @@ public class Cidade implements Serializable {
         this.id = id;
     }
 
-    public Integer getEstadoId() {
+    public Estado getEstadoId() {
         return estadoId;
     }
 
-    public void setEstadoId(Integer estadoId) {
+    public void setEstadoId(Estado estadoId) {
         this.estadoId = estadoId;
     }
 

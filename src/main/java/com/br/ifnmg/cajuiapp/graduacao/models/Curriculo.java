@@ -25,7 +25,7 @@ public class Curriculo implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "ocorencia_curso_id")
+    @Column(name = "ocorrencia_curso_id")
     private Integer ocorrenciaCursoId;
     
     @Column(name = "disciplina_id")
