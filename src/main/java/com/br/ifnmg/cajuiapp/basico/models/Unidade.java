@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,8 +30,9 @@ public class Unidade implements Serializable {
     private String nome;
     private String sigla;
     
-    @Column(name = "unidade_id_pai")
-    private Integer unidadeIdPai;
+    @OneToOne
+    @JoinColumn(name = "unidade_id_pai")
+    private Unidade unidadeIdPai;
     
     private String cep;
     
@@ -81,11 +84,11 @@ public class Unidade implements Serializable {
         this.sigla = sigla;
     }
 
-    public Integer getUnidadeIdPai() {
+    public Unidade getUnidadeIdPai() {
         return unidadeIdPai;
     }
 
-    public void setUnidadeIdPai(Integer unidadeIdPai) {
+    public void setUnidadeIdPai(Unidade unidadeIdPai) {
         this.unidadeIdPai = unidadeIdPai;
     }
 
