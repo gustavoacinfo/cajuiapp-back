@@ -5,12 +5,15 @@
  */
 package com.br.ifnmg.cajuiapp.graduacao.models;
 
+import com.br.ifnmg.cajuiapp.basico.models.Unidade;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,14 +28,16 @@ public class OcorrenciaCurso implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "curso_id")
-    private Integer cursoId;
+    @OneToOne
+    @JoinColumn(name = "curso_id")
+    private Curso cursoId;
     
     @Column(name = "varsao_curso")
     private Integer versaoCurso;
     
-    @Column(name = "unidade_id")
-    private Integer unidadeId;
+    @OneToOne
+    @JoinColumn(name = "unidade_id")
+    private Unidade unidadeId;
     
     @Column(name = "periodo_total")
     private Integer periodoTotal;
@@ -85,11 +90,11 @@ public class OcorrenciaCurso implements Serializable {
         this.id = id;
     }
 
-    public Integer getCursoId() {
+    public Curso getCursoId() {
         return cursoId;
     }
 
-    public void setCursoId(Integer cursoId) {
+    public void setCursoId(Curso cursoId) {
         this.cursoId = cursoId;
     }
 
@@ -101,11 +106,11 @@ public class OcorrenciaCurso implements Serializable {
         this.versaoCurso = versaoCurso;
     }
 
-    public Integer getUnidadeId() {
+    public Unidade getUnidadeId() {
         return unidadeId;
     }
 
-    public void setUnidadeId(Integer unidadeId) {
+    public void setUnidadeId(Unidade unidadeId) {
         this.unidadeId = unidadeId;
     }
 

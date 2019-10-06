@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -24,11 +26,13 @@ public class Oferta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "periodo_letivo_id")
-    private Integer periodoLetivoId;
+    @OneToOne
+    @JoinColumn(name = "periodo_letivo_id")
+    private PeriodoLetivo periodoLetivoId;
     
-    @Column(name = "curriculo_id")
-    private Integer curriculoId;
+    @OneToOne
+    @JoinColumn(name = "curriculo_id")
+    private Curriculo curriculoId;
     
     private Integer vaga;
     
@@ -37,8 +41,9 @@ public class Oferta {
     
     private boolean fechado;
     
-    @Column(name = "turma_id")
-    private Integer turmaId;
+    @OneToOne
+    @JoinColumn(name = "turma_id")
+    private Turma turmaId;
     
     @Column(name = "subturma_id")
     private Integer subturmaId;
@@ -97,19 +102,19 @@ public class Oferta {
         this.id = id;
     }
 
-    public Integer getPeriodoLetivoId() {
+    public PeriodoLetivo getPeriodoLetivoId() {
         return periodoLetivoId;
     }
 
-    public void setPeriodoLetivoId(Integer periodoLetivoId) {
+    public void setPeriodoLetivoId(PeriodoLetivo periodoLetivoId) {
         this.periodoLetivoId = periodoLetivoId;
     }
 
-    public Integer getCurriculoId() {
+    public Curriculo getCurriculoId() {
         return curriculoId;
     }
 
-    public void setCurriculoId(Integer curriculoId) {
+    public void setCurriculoId(Curriculo curriculoId) {
         this.curriculoId = curriculoId;
     }
 
@@ -137,11 +142,11 @@ public class Oferta {
         this.fechado = fechado;
     }
 
-    public Integer getTurmaId() {
+    public Turma getTurmaId() {
         return turmaId;
     }
 
-    public void setTurmaId(Integer turmaId) {
+    public void setTurmaId(Turma turmaId) {
         this.turmaId = turmaId;
     }
 

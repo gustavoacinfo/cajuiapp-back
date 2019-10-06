@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,8 +30,9 @@ public class PeriodoLetivo implements Serializable{
     private Integer ano;
     private Integer semestre;
     
-    @Column(name = "ocorrencia_curso_id")
-    private Integer ocorrenciaCursoId;
+    @OneToOne
+    @JoinColumn(name = "ocorrencia_curso_id")
+    private OcorrenciaCurso ocorrenciaCursoId;
     
     @Column(name = "data_inicio")
     private String dataInicio;
@@ -80,11 +83,11 @@ public class PeriodoLetivo implements Serializable{
         this.semestre = semestre;
     }
 
-    public Integer getOcorrenciaCursoId() {
+    public OcorrenciaCurso getOcorrenciaCursoId() {
         return ocorrenciaCursoId;
     }
 
-    public void setOcorrenciaCursoId(Integer ocorrenciaCursoId) {
+    public void setOcorrenciaCursoId(OcorrenciaCurso ocorrenciaCursoId) {
         this.ocorrenciaCursoId = ocorrenciaCursoId;
     }
 
