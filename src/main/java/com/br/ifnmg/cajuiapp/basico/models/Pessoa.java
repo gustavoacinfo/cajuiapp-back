@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -49,8 +51,9 @@ public class Pessoa  implements Serializable {
     @Column(name="data_nascimento")
     private String dataNascimento;
     
-    @Column(name="cidade_id_nascimento")
-    private Integer cidadeIdNascimento;
+    @OneToOne
+    @JoinColumn(name="cidade_id_nascimento")
+    private Cidade cidadeIdNascimento;
     
     private String nacionalidade;
     
@@ -74,8 +77,9 @@ public class Pessoa  implements Serializable {
     
     private String cep;
     
-    @Column(name="cidade_id_endereco")
-    private Integer cidadeIdEndereco;
+    @OneToOne
+    @JoinColumn(name="cidade_id_endereco")
+    private Cidade cidadeIdEndereco;
     
     private String logradouro;
     private String numero; 
@@ -194,11 +198,11 @@ public class Pessoa  implements Serializable {
         this.dataNascimento = dataNascimento;
     }
 
-    public Integer getCidadeIdNascimento() {
+    public Cidade getCidadeIdNascimento() {
         return cidadeIdNascimento;
     }
 
-    public void setCidadeIdNascimento(Integer cidadeIdNascimento) {
+    public void setCidadeIdNascimento(Cidade cidadeIdNascimento) {
         this.cidadeIdNascimento = cidadeIdNascimento;
     }
 
@@ -274,11 +278,11 @@ public class Pessoa  implements Serializable {
         this.cep = cep;
     }
 
-    public Integer getCidadeIdEndereco() {
+    public Cidade getCidadeIdEndereco() {
         return cidadeIdEndereco;
     }
 
-    public void setCidadeIdEndereco(Integer cidadeIdEndereco) {
+    public void setCidadeIdEndereco(Cidade cidadeIdEndereco) {
         this.cidadeIdEndereco = cidadeIdEndereco;
     }
 
