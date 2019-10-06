@@ -19,7 +19,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="aluno", schema="basico")
-public class Aluno  implements Serializable{
+public class Aluno implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

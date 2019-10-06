@@ -27,7 +27,6 @@ public class Professor implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    private Pessoa pessoa;
     
     @Column(name="created_at")
     private Integer createdAt;
@@ -44,14 +43,6 @@ public class Professor implements Serializable{
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
     }
 
     public Integer getCreatedAt() {
