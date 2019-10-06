@@ -5,12 +5,15 @@
  */
 package com.br.ifnmg.cajuiapp.graduacao.models;
 
+import com.br.ifnmg.cajuiapp.basico.models.Aluno;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,14 +28,17 @@ public class Contrato implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "aluno_id")
-    private Integer alunoId;
+    @OneToOne
+    @JoinColumn(name = "aluno_id")
+    private Aluno alunoId;
     
-    @Column(name = "ocorrencia_curso_id")
-    private Integer ocorrenciaCursoId;
+    @OneToOne
+    @JoinColumn(name = "ocorrencia_curso_id")
+    private OcorrenciaCurso ocorrenciaCursoId;
     
-    @Column(name = "turma_id")
-    private Integer turmaId;
+    @OneToOne
+    @JoinColumn(name = "turma_id")
+    private Turma turmaId;
     
     @Column(name = "coeficiente_rendimento")
     private Number coeficienteRendimento;
@@ -80,27 +86,27 @@ public class Contrato implements Serializable{
         this.id = id;
     }
 
-    public Integer getAlunoId() {
+    public Aluno getAlunoId() {
         return alunoId;
     }
 
-    public void setAlunoId(Integer alunoId) {
+    public void setAlunoId(Aluno alunoId) {
         this.alunoId = alunoId;
     }
 
-    public Integer getOcorrenciaCursoId() {
+    public OcorrenciaCurso getOcorrenciaCursoId() {
         return ocorrenciaCursoId;
     }
 
-    public void setOcorrenciaCursoId(Integer ocorrenciaCursoId) {
+    public void setOcorrenciaCursoId(OcorrenciaCurso ocorrenciaCursoId) {
         this.ocorrenciaCursoId = ocorrenciaCursoId;
     }
 
-    public Integer getTurmaId() {
+    public Turma getTurmaId() {
         return turmaId;
     }
 
-    public void setTurmaId(Integer turmaId) {
+    public void setTurmaId(Turma turmaId) {
         this.turmaId = turmaId;
     }
 
