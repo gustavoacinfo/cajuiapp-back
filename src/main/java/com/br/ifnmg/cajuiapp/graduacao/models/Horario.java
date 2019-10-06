@@ -31,8 +31,9 @@ public class Horario implements Serializable{
     @JoinColumn(name = "oferta_id")
     private Oferta ofertaId;
     
-    @Column(name = "professor_oferta_id")
-    private Integer professorOfertaId;
+    @OneToOne
+    @JoinColumn(name = "professor_oferta_id")
+    private ProfessorOferta professorOfertaId;
     
     private String datas;
     
@@ -67,11 +68,11 @@ public class Horario implements Serializable{
         this.ofertaId = ofertaId;
     }
 
-    public Integer getProfessorOfertaId() {
+    public ProfessorOferta getProfessorOfertaId() {
         return professorOfertaId;
     }
 
-    public void setProfessorOfertaId(Integer professorOfertaId) {
+    public void setProfessorOfertaId(ProfessorOferta professorOfertaId) {
         this.professorOfertaId = professorOfertaId;
     }
 

@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,14 +28,17 @@ public class Matricula implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "oferta_id")
-    private Integer ofertaId;
+    @OneToOne
+    @JoinColumn(name = "oferta_id")
+    private Oferta ofertaId;
     
-    @Column(name = "curriculo_id")
-    private Integer curriculoId;
+    @OneToOne
+    @JoinColumn(name = "curriculo_id")
+    private Curriculo curriculoId;
     
-    @Column(name = "contrato_id")
-    private Integer contratoId;
+    @OneToOne
+    @JoinColumn(name = "contrato_id")
+    private Contrato contratoId;
     
     private Integer frequencia;
     
@@ -86,27 +91,27 @@ public class Matricula implements Serializable {
         this.id = id;
     }
 
-    public Integer getOfertaId() {
+    public Oferta getOfertaId() {
         return ofertaId;
     }
 
-    public void setOfertaId(Integer ofertaId) {
+    public void setOfertaId(Oferta ofertaId) {
         this.ofertaId = ofertaId;
     }
 
-    public Integer getCurriculoId() {
+    public Curriculo getCurriculoId() {
         return curriculoId;
     }
 
-    public void setCurriculoId(Integer curriculoId) {
+    public void setCurriculoId(Curriculo curriculoId) {
         this.curriculoId = curriculoId;
     }
 
-    public Integer getContratoId() {
+    public Contrato getContratoId() {
         return contratoId;
     }
 
-    public void setContratoId(Integer contratoId) {
+    public void setContratoId(Contrato contratoId) {
         this.contratoId = contratoId;
     }
 
