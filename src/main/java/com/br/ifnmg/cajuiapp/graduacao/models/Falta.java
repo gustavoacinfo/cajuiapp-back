@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -27,11 +29,14 @@ public class Falta implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "matricula_id")
-    private Integer matriculaId;
+    //Verificar esse relacionamento
+    @OneToOne
+    @JoinColumn(name = "matricula_id")
+    private Matricula matriculaId;
     
-    @Column(name = "registro_id")
-    private Integer registroId;
+    @OneToOne
+    @JoinColumn(name = "registro_id")
+    private Registro registroId;
     
     @Column(name="created_at")
     private Integer createdAt;
@@ -56,19 +61,19 @@ public class Falta implements Serializable{
         this.id = id;
     }
 
-    public Integer getMatriculaId() {
+    public Matricula getMatriculaId() {
         return matriculaId;
     }
 
-    public void setMatriculaId(Integer matriculaId) {
+    public void setMatriculaId(Matricula matriculaId) {
         this.matriculaId = matriculaId;
     }
 
-    public Integer getRegistroId() {
+    public Registro getRegistroId() {
         return registroId;
     }
 
-    public void setRegistroId(Integer registroId) {
+    public void setRegistroId(Registro registroId) {
         this.registroId = registroId;
     }
 

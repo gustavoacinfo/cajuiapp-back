@@ -40,6 +40,7 @@ public class Disciplina implements Serializable{
     @Column(name = "equivalencia_minutos")
     private double equivalenciaMinutos;
     
+    //Verificar esse relacionamento
     @Column(name = "unidade_id")
     private double unidadeId;
     
