@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,8 +27,9 @@ public class Avaliacao implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "oferta_id")
-    private Integer ofertaId;
+    @OneToOne
+    @JoinColumn(name = "oferta_id")
+    private Oferta ofertaId;
     
     @Column(name = "data_avaliacao")
     private String dataAvaliacao;
@@ -58,11 +61,11 @@ public class Avaliacao implements Serializable {
         this.id = id;
     }
 
-    public Integer getOfertaId() {
+    public Oferta getOfertaId() {
         return ofertaId;
     }
 
-    public void setOfertaId(Integer ofertaId) {
+    public void setOfertaId(Oferta ofertaId) {
         this.ofertaId = ofertaId;
     }
 
