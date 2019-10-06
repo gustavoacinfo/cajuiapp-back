@@ -36,8 +36,9 @@ public class Unidade implements Serializable {
     
     private String cep;
     
-    @Column(name = "cidade_id")
-    private Integer cidadeId;
+    @OneToOne
+    @JoinColumn(name = "cidade_id")
+    private Cidade cidadeId;
     
     private String logradouro;
     private String bairro;
@@ -100,11 +101,11 @@ public class Unidade implements Serializable {
         this.cep = cep;
     }
 
-    public Integer getCidadeId() {
+    public Cidade getCidadeId() {
         return cidadeId;
     }
 
-    public void setCidadeId(Integer cidadeId) {
+    public void setCidadeId(Cidade cidadeId) {
         this.cidadeId = cidadeId;
     }
 
