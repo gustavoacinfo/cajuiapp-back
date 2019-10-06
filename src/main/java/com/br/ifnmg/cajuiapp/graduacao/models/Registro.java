@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -25,8 +27,9 @@ public class Registro implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "professor_oferta_id")
-    private Integer professorOfertaId;
+    @OneToOne
+    @JoinColumn(name = "professor_oferta_id")
+    private ProfessorOferta professorOfertaId;
     
     private String data;
     
@@ -61,11 +64,11 @@ public class Registro implements Serializable {
         this.id = id;
     }
 
-    public Integer getProfessorOfertaId() {
+    public ProfessorOferta getProfessorOfertaId() {
         return professorOfertaId;
     }
 
-    public void setProfessorOfertaId(Integer professorOfertaId) {
+    public void setProfessorOfertaId(ProfessorOferta professorOfertaId) {
         this.professorOfertaId = professorOfertaId;
     }
 

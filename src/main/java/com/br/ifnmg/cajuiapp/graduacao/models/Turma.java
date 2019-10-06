@@ -5,12 +5,15 @@
  */
 package com.br.ifnmg.cajuiapp.graduacao.models;
 
+import com.br.ifnmg.cajuiapp.basico.models.Unidade;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -28,15 +31,19 @@ public class Turma implements Serializable{
     private String nome;
     private String turno;
     
-    @Column(name = "periodo_letivo_id_inicial")
-    private Integer periodoLetivoIdInicial;
-    @Column(name = "periodo_letivo_id_final")
-    private Integer periodoLetivoIdFinal;
+    @OneToOne
+    @JoinColumn(name = "periodo_letivo_id_inicial")
+    private PeriodoLetivo periodoLetivoIdInicial;
+    
+    @OneToOne
+    @JoinColumn(name = "periodo_letivo_id_final")
+    private PeriodoLetivo periodoLetivoIdFinal;
     
     private Integer vaga;
     
-    @Column(name = "unidade_id")
-    private Integer unidadeId;
+    @OneToOne
+    @JoinColumn(name = "unidade_id")
+    private Unidade unidadeId;
     
     @Column(name = "podo_id")
     private Integer poloId;
@@ -83,19 +90,19 @@ public class Turma implements Serializable{
         this.turno = turno;
     }
 
-    public Integer getPeriodoLetivoIdInicial() {
+    public PeriodoLetivo getPeriodoLetivoIdInicial() {
         return periodoLetivoIdInicial;
     }
 
-    public void setPeriodoLetivoIdInicial(Integer periodoLetivoIdInicial) {
+    public void setPeriodoLetivoIdInicial(PeriodoLetivo periodoLetivoIdInicial) {
         this.periodoLetivoIdInicial = periodoLetivoIdInicial;
     }
 
-    public Integer getPeriodoLetivoIdFinal() {
+    public PeriodoLetivo getPeriodoLetivoIdFinal() {
         return periodoLetivoIdFinal;
     }
 
-    public void setPeriodoLetivoIdFinal(Integer periodoLetivoIdFinal) {
+    public void setPeriodoLetivoIdFinal(PeriodoLetivo periodoLetivoIdFinal) {
         this.periodoLetivoIdFinal = periodoLetivoIdFinal;
     }
 
@@ -107,11 +114,11 @@ public class Turma implements Serializable{
         this.vaga = vaga;
     }
 
-    public Integer getUnidadeId() {
+    public Unidade getUnidadeId() {
         return unidadeId;
     }
 
-    public void setUnidadeId(Integer unidadeId) {
+    public void setUnidadeId(Unidade unidadeId) {
         this.unidadeId = unidadeId;
     }
 
