@@ -5,6 +5,7 @@
  */
 package com.br.ifnmg.cajuiapp.graduacao.models;
 
+import com.br.ifnmg.cajuiapp.basico.models.Professor;
 import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,8 +21,8 @@ import javax.persistence.Table;
  * @author Gustavo
  */
 @Entity
-@Table(name="horario", schema="graduacao")
-public class Horario implements Serializable{
+@Table(name="professor_oferta", schema="graduacao")
+public class ProfessorOferta implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,12 +32,9 @@ public class Horario implements Serializable{
     @JoinColumn(name = "oferta_id")
     private Oferta ofertaId;
     
-    @Column(name = "professor_oferta_id")
-    private Integer professorOfertaId;
-    
-    private String datas;
-    
-    private String horas;
+    @OneToOne
+    @JoinColumn(name = "professor_id")
+    private Professor professorId;
     
     @Column(name="created_at")
     private Integer createdAt;
@@ -46,10 +44,6 @@ public class Horario implements Serializable{
     private Integer createdBy;
     @Column(name="updated_by")
     private Integer updatedBy;
-    
-// * @property Oferta $oferta
-// * @property ProfessorOferta $professorOferta
-// * @property array $datasHorario
 
     public Integer getId() {
         return id;
@@ -67,28 +61,12 @@ public class Horario implements Serializable{
         this.ofertaId = ofertaId;
     }
 
-    public Integer getProfessorOfertaId() {
-        return professorOfertaId;
+    public Professor getProfessorId() {
+        return professorId;
     }
 
-    public void setProfessorOfertaId(Integer professorOfertaId) {
-        this.professorOfertaId = professorOfertaId;
-    }
-
-    public String getDatas() {
-        return datas;
-    }
-
-    public void setDatas(String datas) {
-        this.datas = datas;
-    }
-
-    public String getHoras() {
-        return horas;
-    }
-
-    public void setHoras(String horas) {
-        this.horas = horas;
+    public void setProfessorId(Professor professorId) {
+        this.professorId = professorId;
     }
 
     public Integer getCreatedAt() {

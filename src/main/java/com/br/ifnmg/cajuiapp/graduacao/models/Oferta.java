@@ -64,6 +64,15 @@ public class Oferta {
     private String descricao;
     
     private String nomeTurma;
+    
+    @Column(name="created_at")
+    private Integer createdAt;
+    @Column(name="updated_at")
+    private Integer updatedAt;
+    @Column(name="created_by")
+    private Integer createdBy;
+    @Column(name="updated_by")
+    private Integer updatedBy;
 
 // * @property Turma           $turma
 // * @property Subturma        $subturma
@@ -207,6 +216,40 @@ public class Oferta {
     public void setNomeTurma(String nomeTurma) {
         this.nomeTurma = nomeTurma;
     }
+
+    public Integer getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Integer createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Integer getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Integer updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+    public Integer getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(Integer createdBy) {
+        this.createdBy = createdBy;
+    }
+
+    public Integer getUpdatedBy() {
+        return updatedBy;
+    }
+
+    public void setUpdatedBy(Integer updatedBy) {
+        this.updatedBy = updatedBy;
+    }
+    
+    
     
     
     
