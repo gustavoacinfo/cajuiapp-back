@@ -5,8 +5,8 @@
  */
 package com.br.ifnmg.cajuiapp.graduacao.resources;
 
-import com.br.ifnmg.cajuiapp.graduacao.models.Nota;
-import com.br.ifnmg.cajuiapp.graduacao.repository.NotaRepository;
+import com.br.ifnmg.cajuiapp.graduacao.models.NotaAvaliacao;
+import com.br.ifnmg.cajuiapp.graduacao.repository.NotaAvaliacaoRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,27 +22,27 @@ import org.springframework.web.bind.annotation.RestController;
  * @author Gustavo
  */
 @RestController
-@RequestMapping("/nota")
-public class NotaResource {
+@RequestMapping("/notaavaliacao")
+public class NotaAvaliacaoResource {
     
     @Autowired
-    private NotaRepository er;
+    private NotaAvaliacaoRepository er;
     
     @GetMapping(produces="application/json")
-    public @ResponseBody Iterable listaNotas(){
-        Iterable<Nota> listaNotas = er.findAll();
-        return listaNotas;
+    public @ResponseBody Iterable listaNotaAvaliacoes(){
+        Iterable<NotaAvaliacao> listaNotaAvaliacoes = er.findAll();
+        return listaNotaAvaliacoes;
     }
     
     @PostMapping()
-    public Nota cadastrarNota(@RequestBody @Valid Nota nota){
-        return er.save(nota);
+    public NotaAvaliacao cadastrarNotaAvaliacao(@RequestBody @Valid NotaAvaliacao notaavaliacao){
+        return er.save(notaavaliacao);
     }
     
     @DeleteMapping()
-    public Nota deletaNota(@RequestBody Nota nota){
-        er.delete(nota);
-        return nota;
+    public NotaAvaliacao deletaNotaAvaliacao(@RequestBody NotaAvaliacao notaavaliacao){
+        er.delete(notaavaliacao);
+        return notaavaliacao;
     }
     
 }

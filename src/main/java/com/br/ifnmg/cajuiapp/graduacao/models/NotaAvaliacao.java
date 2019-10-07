@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -18,18 +20,20 @@ import javax.persistence.Table;
  * @author Gustavo
  */
 @Entity
-@Table(name="nota", schema="graduacao")
-public class Nota implements Serializable{
+@Table(name="nota_avaliacao", schema="graduacao")
+public class NotaAvaliacao implements Serializable {
     
-    @Id
+     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     
-    @Column(name = "matricula_id")
-    private Integer matriculaId;
+    @OneToOne
+    @JoinColumn(name = "matricula_id")
+    private Matricula matriculaId;
     
-    @Column(name = "avaliacao_id")
-    private Integer avaliacaoId;
+    @OneToOne
+    @JoinColumn(name = "avaliacao_id")
+    private Avaliacao avaliacaoId;
     
     private double nota;
     
@@ -41,13 +45,6 @@ public class Nota implements Serializable{
     private Integer createdBy;
     @Column(name="updated_by")
     private Integer updatedBy;
-    
-    
-// * @property UpdateUser $updatedBy
-// * @property CreateUser $createdBy
-// * @property Avaliacao  $avaliacao
-// * @property Matricula  $matricula
-//    
 
     public Integer getId() {
         return id;
@@ -57,19 +54,19 @@ public class Nota implements Serializable{
         this.id = id;
     }
 
-    public Integer getMatriculaId() {
+    public Matricula getMatriculaId() {
         return matriculaId;
     }
 
-    public void setMatriculaId(Integer matriculaId) {
+    public void setMatriculaId(Matricula matriculaId) {
         this.matriculaId = matriculaId;
     }
 
-    public Integer getAvaliacaoId() {
+    public Avaliacao getAvaliacaoId() {
         return avaliacaoId;
     }
 
-    public void setAvaliacaoId(Integer avaliacaoId) {
+    public void setAvaliacaoId(Avaliacao avaliacaoId) {
         this.avaliacaoId = avaliacaoId;
     }
 
@@ -112,4 +109,7 @@ public class Nota implements Serializable{
     public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
+    
+    
+    
 }

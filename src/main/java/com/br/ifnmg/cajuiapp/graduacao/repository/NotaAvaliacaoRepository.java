@@ -5,13 +5,13 @@
  */
 package com.br.ifnmg.cajuiapp.graduacao.repository;
 
-import com.br.ifnmg.cajuiapp.graduacao.models.Nota;
+import com.br.ifnmg.cajuiapp.graduacao.models.NotaAvaliacao;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Gustavo
  */
-public interface NotaRepository extends JpaRepository<Nota, String>  {
+public interface NotaAvaliacaoRepository extends JpaRepository<NotaAvaliacao, String>  {
     
 }

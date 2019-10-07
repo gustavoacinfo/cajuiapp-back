@@ -5,6 +5,7 @@
  */
 package com.br.ifnmg.cajuiapp.basico.models;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -32,7 +33,6 @@ public class Pessoa extends Usuario {
     @JoinColumn(name="unidade_id")
     private Unidade unidadeId;
     
-    private String avatar;
     private String nome;
     
     @Column(name="nome_social")
@@ -44,7 +44,7 @@ public class Pessoa extends Usuario {
     private String estadoCivil;
     
     @Column(name="data_nascimento")
-    private String dataNascimento;
+    private Date dataNascimento;
     
     @OneToOne
     @JoinColumn(name="cidade_id_nascimento")
@@ -59,7 +59,7 @@ public class Pessoa extends Usuario {
     private String nomePai;
     
     @Column(name="data_falecimento")
-    private String dataFalecimento;
+    private Date dataFalecimento;
     
     private String cpf;
     private String rg;
@@ -82,17 +82,11 @@ public class Pessoa extends Usuario {
     private String bairro;
     private String telefone;
     
-    @Column(name="created_at")
-    private Integer createdAt;
-    @Column(name="updated_at")
-    private Integer updatedAt;
     @Column(name="created_by")
     private Integer createdBy;
     @Column(name="updated_by")
     private Integer updatedBy;
-    
-    private String imagemUrl;
-    private String avatarUrl;
+   
 //    private Cidade cidadeNascimento;
 //    private Cidade cidadeEndereco;
 //    private Unidade unidade; 
@@ -137,14 +131,6 @@ public class Pessoa extends Usuario {
         this.unidadeId = unidadeId;
     }
 
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -177,11 +163,11 @@ public class Pessoa extends Usuario {
         this.estadoCivil = estadoCivil;
     }
 
-    public String getDataNascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
     }
 
-    public void setDataNascimento(String dataNascimento) {
+    public void setDataNascimento(Date dataNascimento) {
         this.dataNascimento = dataNascimento;
     }
 
@@ -217,11 +203,11 @@ public class Pessoa extends Usuario {
         this.nomePai = nomePai;
     }
 
-    public String getDataFalecimento() {
+    public Date getDataFalecimento() {
         return dataFalecimento;
     }
 
-    public void setDataFalecimento(String dataFalecimento) {
+    public void setDataFalecimento(Date dataFalecimento) {
         this.dataFalecimento = dataFalecimento;
     }
 
@@ -313,22 +299,6 @@ public class Pessoa extends Usuario {
         this.telefone = telefone;
     }
 
-    public Integer getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Integer createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Integer getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(Integer updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     public Integer getCreatedBy() {
         return createdBy;
     }
@@ -344,22 +314,8 @@ public class Pessoa extends Usuario {
     public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
     }
+    
 
-    public String getImagemUrl() {
-        return imagemUrl;
-    }
-
-    public void setImagemUrl(String imagemUrl) {
-        this.imagemUrl = imagemUrl;
-    }
-
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
-    }
     
     //    public Cidade getCidadeNascimento() {
 //        return cidadeNascimento;

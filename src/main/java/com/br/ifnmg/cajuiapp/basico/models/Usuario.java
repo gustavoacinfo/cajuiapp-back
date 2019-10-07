@@ -38,6 +38,11 @@ public class Usuario implements Serializable{
     
     @Column(name = "password_reset_token")
     private String passwordResetToken;
+    
+    @Column(name="created_at")
+    private Integer createdAt;
+    @Column(name="updated_at")
+    private Integer updatedAt;
 
     public Integer getId() {
         return id;
@@ -86,14 +91,25 @@ public class Usuario implements Serializable{
     public void setPasswordResetToken(String passwordResetToken) {
         this.passwordResetToken = passwordResetToken;
     }
+    
 
-//    public Pessoa getPessoa() {
-//        return pessoa;
-//    }
-//
-//    public void setPessoa(Pessoa pessoa) {
-//        this.pessoa = pessoa;
-//    }
+    public Integer getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Integer createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Integer getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Integer updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
+   
  
     
 }
