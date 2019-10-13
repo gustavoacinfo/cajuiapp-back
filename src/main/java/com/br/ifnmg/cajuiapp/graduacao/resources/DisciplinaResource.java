@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,13 @@ public class DisciplinaResource {
     public @ResponseBody Iterable listaDisciplinas(){
         Iterable<Disciplina> listaDisciplinas = er.findAll();
         return listaDisciplinas;
+    }
+    
+    
+    @GetMapping(produces="application/json", value="/aluno/{id}")
+    public @ResponseBody Iterable listaDisciplinasPorAluno(@PathVariable("id") Integer id){
+        Iterable<Disciplina> listaDisciplinasPorAluno = er.listarDisciplinaPorAluno(id);
+        return listaDisciplinasPorAluno;
     }
     
     @PostMapping()
