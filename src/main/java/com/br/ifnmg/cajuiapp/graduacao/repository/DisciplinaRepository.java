@@ -21,4 +21,9 @@ public interface DisciplinaRepository extends JpaRepository<Disciplina, String> 
 "where ct.aluno_id = ? and m.estado_matricula = 'MATRICULADO'",nativeQuery=true)
     public List<Disciplina> listarDisciplinaPorAluno(Integer id);
     
+    @Query(value="select * from graduacao.disciplina as d join graduacao.curriculo as c on d.id = c.disciplina_id \n" +
+"join graduacao.oferta as o on o.curriculo_id = c.id join graduacao.professor_oferta as po \n" +
+"on o.id = po.oferta_id where po.professor_id = ?1 and o.periodo_letivo_id = ?2",nativeQuery=true)
+    public List<Disciplina> listarDisciplinaDoProfessor(Integer id, Integer periodo_id);
+    
 }

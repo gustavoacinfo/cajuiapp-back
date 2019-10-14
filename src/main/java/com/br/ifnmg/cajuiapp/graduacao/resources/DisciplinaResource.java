@@ -42,6 +42,12 @@ public class DisciplinaResource {
         return listaDisciplinasPorAluno;
     }
     
+    @GetMapping(produces="application/json", value="/professor/{id}/periodo/{periodo_id}")
+    public @ResponseBody Iterable listaDisciplinasPorProfessor(@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id){
+        Iterable<Disciplina> listaDisciplinasPorProfessor = er.listarDisciplinaDoProfessor(id, periodo_id);
+        return listaDisciplinasPorProfessor;
+    }
+    
     @PostMapping()
     public Disciplina cadastrarDisciplina(@RequestBody @Valid Disciplina disciplina){
         return er.save(disciplina);
