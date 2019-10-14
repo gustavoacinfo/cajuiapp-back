@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,6 +34,12 @@ public class RegistroResource {
     public @ResponseBody Iterable listaRegistros(){
         Iterable<Registro> listaRegistros = er.findAll();
         return listaRegistros;
+    }
+    
+    @GetMapping(produces="application/json", value="/professor/{id}/disciplina/{disciplina_id}")
+    public @ResponseBody Iterable listaRegistroDoProfessorNaDisciplina(@PathVariable("id") Integer id, @PathVariable("disciplina_id") Integer disciplina_id){
+        Iterable<Registro> listaRegistroDoProfessorNaDisciplina = er.listarRegistroDoProfessorNaDisciplina(id, disciplina_id);
+        return listaRegistroDoProfessorNaDisciplina;
     }
     
     @PostMapping()
