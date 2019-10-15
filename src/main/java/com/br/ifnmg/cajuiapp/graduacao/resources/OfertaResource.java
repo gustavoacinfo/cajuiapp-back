@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,12 @@ public class OfertaResource {
     public @ResponseBody Iterable listaOfertas(){
         Iterable<Oferta> listaOfertas = er.findAll();
         return listaOfertas;
+    }
+    
+     @GetMapping(produces="application/json", value="/aluno/{id}/periodo/{periodo_id}")
+    public @ResponseBody Iterable listaOfertasDoAluno(@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id ){
+        Iterable<Oferta> listarOfertasDoAluno = er.listarOfertasDoAluno(id, periodo_id);
+        return listarOfertasDoAluno;
     }
     
     @PostMapping()
