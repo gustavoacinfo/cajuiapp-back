@@ -6,6 +6,7 @@
 package com.br.ifnmg.cajuiapp.graduacao.repository;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.ProfessorOferta;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
@@ -13,5 +14,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Gustavo
  */
 public interface ProfessorOfertaRepository extends JpaRepository<ProfessorOferta, String>{
+    
+     
     
 }

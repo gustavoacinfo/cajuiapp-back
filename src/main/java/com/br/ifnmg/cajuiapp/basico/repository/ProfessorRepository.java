@@ -16,11 +16,11 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface ProfessorRepository extends JpaRepository<Professor, String> {
     
-    @Query(value="Select pe.nome from basico.professor as pr join basico.pessoa as pe on pe.id = pr.id join graduacao.professor_oferta as po on pr.id = po.professor_id \n" +
-"join graduacao.oferta as o on po.oferta_id = o.id join graduacao.curriculo as cu on o.curriculo_id = cu.id\n" +
-"join graduacao.disciplina as d on cu.disciplina_id = d.id join graduacao.matricula as m on m.curriculo_id = cu.id\n" +
-"join graduacao.contrato as c on m.contrato_id = c.id where c.aluno_id = ?1 and d.id = ?2 and m.estado_matricula = 'MATRICULADO'",nativeQuery=true)
-    public List<String> listarProfessorDaDisciplinaPorAluno(Integer id, Integer disciplina_id);
+    @Query(value="select p.nome from basico.pessoa as p join basico.professor as pr on p.id = pr.id join graduacao.professor_oferta\n" +
+"as po on po.professor_id = pr.id where po.oferta_id = ?",nativeQuery=true)
+    public List<String> listarProfessoresDoAluno(Integer id);
+    
+    
   
     
 }

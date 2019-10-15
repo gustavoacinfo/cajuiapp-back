@@ -35,10 +35,10 @@ public class ProfessorResource {
         return listaProfessores;
     }
     
-    @GetMapping(produces="application/json", value="/aluno/{id}/disciplina/{disciplina_id}")
-    public @ResponseBody Iterable listaProfessorDaDisciplinaPorAluno(@PathVariable("id") Integer id, @PathVariable("disciplina_id") Integer disciplina_id ){
-        Iterable<String> listarProfessorDaDisciplinaPorAluno = er.listarProfessorDaDisciplinaPorAluno(id, disciplina_id);
-        return listarProfessorDaDisciplinaPorAluno;
+    @GetMapping(produces="application/json", value="/oferta/{id}")
+    public @ResponseBody Iterable listaProfessoresDoAluno(@PathVariable("id") Integer id){
+        Iterable<String> listaProfessoresDoAluno = er.listarProfessoresDoAluno(id);
+        return listaProfessoresDoAluno;
     }
     
     @PostMapping()
