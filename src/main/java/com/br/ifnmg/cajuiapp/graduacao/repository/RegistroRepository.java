@@ -16,9 +16,8 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface RegistroRepository extends JpaRepository<Registro, String>{
     
-    @Query(value="select * from graduacao.registro as r join graduacao.professor_oferta as po on r.professor_oferta_id = po.id\n" +
-"join graduacao.oferta as o on po.oferta_id = o.id join graduacao.curriculo as c on o.curriculo_id = c.id\n" +
-"where po.professor_id = ?1 and c.disciplina_id = ?2",nativeQuery=true)
-    public List<Registro> listarRegistroDoProfessorNaDisciplina(Integer id, Integer disciplina_id);
+    @Query(value="select * from graduacao.registro as r join graduacao.professor_oferta as po on r.professor_oferta_id = po.id \n" +
+"where po.oferta_id = ? ",nativeQuery=true)
+    public List<Registro> listarRegistroDaOferta(Integer id);
     
 }

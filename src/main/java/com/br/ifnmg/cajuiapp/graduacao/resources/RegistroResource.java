@@ -36,10 +36,10 @@ public class RegistroResource {
         return listaRegistros;
     }
     
-    @GetMapping(produces="application/json", value="/professor/{id}/disciplina/{disciplina_id}")
-    public @ResponseBody Iterable listaRegistroDoProfessorNaDisciplina(@PathVariable("id") Integer id, @PathVariable("disciplina_id") Integer disciplina_id){
-        Iterable<Registro> listaRegistroDoProfessorNaDisciplina = er.listarRegistroDoProfessorNaDisciplina(id, disciplina_id);
-        return listaRegistroDoProfessorNaDisciplina;
+    @GetMapping(produces="application/json", value="/oferta/{id}")
+    public @ResponseBody Iterable listaRegistroDaOferta(@PathVariable("id") Integer id){
+        Iterable<Registro> listaRegistroDaOferta = er.listarRegistroDaOferta(id);
+        return listaRegistroDaOferta;
     }
     
     @PostMapping()
