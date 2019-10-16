@@ -36,6 +36,12 @@ public class ProfessorOfertaResource {
         return listaProfessorOfertas;
     }
     
+     @GetMapping(produces="application/json", value="/aluno") //"/aluno/{id}/periodo/{periodo_id}"
+    public @ResponseBody Iterable listaOfertasDoAluno(){ //@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id
+        Iterable<ProfessorOferta> listarOfertasDoAluno = er.listarOfertasDoAluno(); //id, periodo_id
+        return listarOfertasDoAluno;
+    }
+    
     @PostMapping()
     public ProfessorOferta cadastrarProfessorOferta(@RequestBody @Valid ProfessorOferta professoroferta){
         return er.save(professoroferta);

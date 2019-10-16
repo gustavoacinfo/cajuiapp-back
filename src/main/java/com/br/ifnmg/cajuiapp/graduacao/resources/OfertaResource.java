@@ -37,11 +37,6 @@ public class OfertaResource {
         return listaOfertas;
     }
     
-    @GetMapping(produces="application/json", value="/aluno") //"/aluno/{id}/periodo/{periodo_id}"
-    public @ResponseBody Iterable listaOfertasDoAluno(){ //@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id
-        Iterable<Oferta> listarOfertasDoAluno = er.listarOfertasDoAluno(); //id, periodo_id
-        return listarOfertasDoAluno;
-    }
     
     @PostMapping()
     public Oferta cadastrarOferta(@RequestBody @Valid Oferta oferta){
