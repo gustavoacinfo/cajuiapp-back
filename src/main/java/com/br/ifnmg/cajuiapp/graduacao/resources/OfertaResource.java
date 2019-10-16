@@ -9,6 +9,7 @@ import com.br.ifnmg.cajuiapp.graduacao.models.Oferta;
 import com.br.ifnmg.cajuiapp.graduacao.repository.OfertaRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/oferta")
 public class OfertaResource {
@@ -35,9 +37,9 @@ public class OfertaResource {
         return listaOfertas;
     }
     
-     @GetMapping(produces="application/json", value="/aluno/{id}/periodo/{periodo_id}")
-    public @ResponseBody Iterable listaOfertasDoAluno(@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id ){
-        Iterable<Oferta> listarOfertasDoAluno = er.listarOfertasDoAluno(id, periodo_id);
+    @GetMapping(produces="application/json", value="/aluno") //"/aluno/{id}/periodo/{periodo_id}"
+    public @ResponseBody Iterable listaOfertasDoAluno(){ //@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id
+        Iterable<Oferta> listarOfertasDoAluno = er.listarOfertasDoAluno(); //id, periodo_id
         return listarOfertasDoAluno;
     }
     

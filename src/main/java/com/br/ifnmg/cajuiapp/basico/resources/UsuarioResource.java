@@ -9,8 +9,10 @@ import com.br.ifnmg.cajuiapp.basico.models.Usuario;
 import com.br.ifnmg.cajuiapp.basico.repository.UsuarioRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioResource {
@@ -33,6 +36,15 @@ public class UsuarioResource {
         Iterable<Usuario> listaUsuarios = er.findAll();
         return listaUsuarios;
     }
+    
+    
+    
+    @GetMapping(produces="application/json", value="/{username}")
+    public @ResponseBody Iterable listaUsuarioPorUsername(@PathVariable("username") String username){
+        Iterable<Integer> listaUsuarioPorUsername = er.findByEmail(username);
+        return listaUsuarioPorUsername;
+    }
+    
     
     @PostMapping()
     public Usuario cadastrarUsuario(@RequestBody @Valid Usuario usuario){

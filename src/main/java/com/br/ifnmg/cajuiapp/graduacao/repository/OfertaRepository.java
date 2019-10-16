@@ -17,8 +17,8 @@ import org.springframework.data.jpa.repository.Query;
 public interface OfertaRepository extends JpaRepository<Oferta, String> {
     
     @Query(value="select * from graduacao.oferta as o join graduacao.matricula as m on o.id = m.oferta_id join graduacao.contrato as c\n" +
-"on m.contrato_id = c.id join basico.aluno as a on c.aluno_id = a.id where a.id = ?1 and m.estado_matricula = 'MATRICULADO'\n" +
-"and o.periodo_letivo_id = ?2",nativeQuery=true)
-    public List<Oferta> listarOfertasDoAluno(Integer id, Integer periodo_id);
-    
+"on m.contrato_id = c.id join basico.aluno as a on c.aluno_id = a.id where a.id = 24 and m.estado_matricula = 'MATRICULADO'\n" +
+"and o.periodo_letivo_id = 9",nativeQuery=true)
+    public List<Oferta> listarOfertasDoAluno();
+    //Integer id, Integer periodo_id
 }
