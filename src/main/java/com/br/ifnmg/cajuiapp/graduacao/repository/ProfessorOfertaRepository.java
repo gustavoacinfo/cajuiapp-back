@@ -7,6 +7,7 @@ package com.br.ifnmg.cajuiapp.graduacao.repository;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.ProfessorOferta;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -22,5 +23,8 @@ public interface ProfessorOfertaRepository extends JpaRepository<ProfessorOferta
 "and o.periodo_letivo_id = 9 and  po.tipo_professor = 'PROFESSOR'",nativeQuery=true)
     public List<ProfessorOferta> listarOfertasDoAluno();
     //Integer id, Integer periodo_id
+
+    public Optional<ProfessorOferta> findById(Integer id);
+
     
 }
