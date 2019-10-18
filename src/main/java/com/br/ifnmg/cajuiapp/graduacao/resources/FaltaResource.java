@@ -38,9 +38,9 @@ public class FaltaResource {
         return listaFaltas;
     }
     
-    @GetMapping(produces="application/json", value="/oferta/{id}/aluno/{aluno_id}")
-    public @ResponseBody Iterable listaFaltasDoAluno(@PathVariable("id") Integer id, @PathVariable("aluno_id") Integer aluno_id ){
-        Iterable<Falta> listarFaltasDoAluno = er.contaFaltasDoAluno(id, aluno_id);
+    @GetMapping(produces="application/json", value="/oferta/{id}") ///aluno/{aluno_id}
+    public @ResponseBody Iterable listaFaltasDoAluno(@PathVariable("id") Integer id){ // @PathVariable("aluno_id") Integer aluno_id
+        Iterable<Falta> listarFaltasDoAluno = er.contaFaltasDoAluno(id ); //aluno_id
         return listarFaltasDoAluno;
     }
     

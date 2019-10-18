@@ -37,10 +37,22 @@ public class NotaAvaliacaoResource {
         return listaNotaAvaliacoes;
     }
     
-    @GetMapping(produces="application/json", value="/oferta/{id}/aluno/{aluno_id}")
-    public @ResponseBody Iterable listaAvaliacoesDoAluno(@PathVariable("id") Integer id, @PathVariable("aluno_id") Integer aluno_id ){
-        Iterable<NotaAvaliacao> listarAvaliacoesDoAluno = er.listaAvaliacoesDoAluno(id, aluno_id);
+    @GetMapping(produces="application/json", value="/oferta/{id}") ///aluno/{aluno_id}
+    public @ResponseBody Iterable listaAvaliacoesDoAluno(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
+        Iterable<NotaAvaliacao> listarAvaliacoesDoAluno = er.listaAvaliacoesDoAluno(id); //aluno_id
         return listarAvaliacoesDoAluno;
+    }
+    
+    @GetMapping(produces="application/json", value="/distribuidos/{id}") ///aluno/{aluno_id}
+    public @ResponseBody Iterable somaPontosDistribuidos(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
+        Iterable<Integer> somaPontosDistribuidos = er.somaPontosDistribuidos(id); //aluno_id
+        return somaPontosDistribuidos;
+    }
+    
+    @GetMapping(produces="application/json", value="/obtidos/{id}") ///aluno/{aluno_id}
+    public @ResponseBody Iterable somaPontosObtidos(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
+        Iterable<Integer> somaPontosObtidos = er.somaPontosObtidos(id); //aluno_id
+        return somaPontosObtidos;
     }
     
     @PostMapping()

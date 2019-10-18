@@ -18,7 +18,19 @@ public interface NotaAvaliacaoRepository extends JpaRepository<NotaAvaliacao, St
     
      @Query(value="select * from graduacao.nota_avaliacao as na join graduacao.avaliacao as av on na.avaliacao_id = av.id \n" +
 "join graduacao.matricula as m on na.matricula_id = m.id join graduacao.contrato as c on m.contrato_id = c.id\n" +
-"where av.oferta_id = ?1 and c.aluno_id = ?2",nativeQuery=true)
-    public List<NotaAvaliacao> listaAvaliacoesDoAluno(Integer id, Integer aluno_id);
+"where av.oferta_id = ?1",nativeQuery=true)
+    public List<NotaAvaliacao> listaAvaliacoesDoAluno(Integer id);//, Integer aluno_id
+    
+    @Query(value="select sum(av.max_pontos) from graduacao.nota_avaliacao as na join graduacao.avaliacao as av on na.avaliacao_id = av.id \n" +
+"join graduacao.matricula as m on na.matricula_id = m.id join graduacao.contrato as c on m.contrato_id = c.id\n" +
+"where av.oferta_id = ?1",nativeQuery=true)
+    public List<Integer> somaPontosDistribuidos(Integer id);//, Integer aluno_id
+    
+    @Query(value="select sum(na.nota) from graduacao.nota_avaliacao as na join graduacao.avaliacao as av on na.avaliacao_id = av.id \n" +
+"join graduacao.matricula as m on na.matricula_id = m.id join graduacao.contrato as c on m.contrato_id = c.id\n" +
+"where av.oferta_id = ?1 and c.aluno_id = 24",nativeQuery=true)
+    public List<Integer> somaPontosObtidos(Integer id);//, Integer aluno_id
+    
+    
     
 }
