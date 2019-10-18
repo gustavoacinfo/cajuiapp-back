@@ -23,6 +23,11 @@ public interface ProfessorOfertaRepository extends JpaRepository<ProfessorOferta
 "and o.periodo_letivo_id = 9 and  po.tipo_professor = 'PROFESSOR'",nativeQuery=true)
     public List<ProfessorOferta> listarOfertasDoAluno();
     //Integer id, Integer periodo_id
+    
+    @Query(value="select * from graduacao.professor_oferta as po join graduacao.oferta as o on po.oferta_id = o.id \n" +
+"where po.professor_id = 17 and o.periodo_letivo_id = 9",nativeQuery=true)
+    public List<ProfessorOferta> listarOfertasDoProfessor();
+    //Integer id, Integer periodo_id
 
     public Optional<ProfessorOferta> findById(Integer id);
 
