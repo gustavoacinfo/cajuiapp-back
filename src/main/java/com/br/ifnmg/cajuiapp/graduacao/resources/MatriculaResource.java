@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,12 @@ public class MatriculaResource {
     public @ResponseBody Iterable listaMatriculas(){
         Iterable<Matricula> listaMatriculas = er.findAll();
         return listaMatriculas;
+    }
+    
+    @GetMapping(produces="application/json", value="/oferta/{id}")
+    public @ResponseBody Iterable listaMatriculasDaOferta(@PathVariable("id") Integer id){
+        Iterable<Matricula> listaMatriculasDaOferta = er.listarMatriculasDaOferta(id);
+        return listaMatriculasDaOferta;
     }
     
     @PostMapping()

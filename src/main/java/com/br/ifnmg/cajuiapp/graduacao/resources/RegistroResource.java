@@ -7,6 +7,7 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.Registro;
 import com.br.ifnmg.cajuiapp.graduacao.repository.RegistroRepository;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -42,6 +43,12 @@ public class RegistroResource {
     public @ResponseBody Iterable listaRegistroDaOferta(@PathVariable("id") Integer id){
         Iterable<Registro> listaRegistroDaOferta = er.listarRegistroDaOferta(id);
         return listaRegistroDaOferta;
+    }
+    
+    @GetMapping(produces="application/json", value="/{id}")
+    public @ResponseBody Optional<Registro> listaRegistroId(@PathVariable("id") Integer id){
+        Optional<Registro> listaRegistroId = er.findById(id);
+        return listaRegistroId;
     }
     
     @PostMapping()

@@ -10,7 +10,6 @@ import com.br.ifnmg.cajuiapp.graduacao.repository.ProfessorOfertaRepository;
 import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -51,6 +50,12 @@ public class ProfessorOfertaResource {
     public @ResponseBody Iterable listaOfertasDoAluno(){ //@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id
         Iterable<ProfessorOferta> listarOfertasDoAluno = er.listarOfertasDoAluno(); //id, periodo_id
         return listarOfertasDoAluno;
+    }
+    
+    @GetMapping(produces="application/json", value="/professor") //"/aluno/{id}/periodo/{periodo_id}"
+    public @ResponseBody Iterable listaOfertasDoProfessor(){ //@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id
+        Iterable<ProfessorOferta> listarOfertasDoProfessor = er.listarOfertasDoProfessor(); //id, periodo_id
+        return listarOfertasDoProfessor;
     }
     
     @PostMapping()

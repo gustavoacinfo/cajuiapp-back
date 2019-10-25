@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,18 @@ public class AvaliacaoResource {
     public @ResponseBody Iterable listaAvaliacoes(){
         Iterable<Avaliacao> listaAvaliacoes = er.findAll();
         return listaAvaliacoes;
+    }
+    
+    @GetMapping(produces="application/json", value="/oferta/{id}")
+    public @ResponseBody Iterable listaAvaliacaoDaOferta(@PathVariable("id") Integer id){
+        Iterable<Avaliacao> listaAvaliacaoDaOferta = er.listarAvaliacaoDaOferta(id);
+        return listaAvaliacaoDaOferta;
+    }
+    
+    @GetMapping(produces="application/json", value="/distribuidos/{id}") 
+    public @ResponseBody Iterable somaPontosDistribuidos(@PathVariable("id") Integer id){ 
+        Iterable<Integer> somaPontosDistribuidos = er.somaPontosDistribuidos(id); 
+        return somaPontosDistribuidos;
     }
     
     @PostMapping()

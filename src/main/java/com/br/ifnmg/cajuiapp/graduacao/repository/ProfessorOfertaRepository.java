@@ -20,14 +20,14 @@ public interface ProfessorOfertaRepository extends JpaRepository<ProfessorOferta
     
      @Query(value="select * from graduacao.professor_oferta as po join graduacao.oferta as o on po.oferta_id = o.id join graduacao.matricula as m on o.id = m.oferta_id join graduacao.contrato as c\n" +
 "on m.contrato_id = c.id join basico.aluno as a on c.aluno_id = a.id where a.id = 24 and m.estado_matricula = 'MATRICULADO'\n" +
-"and o.periodo_letivo_id = 9 and  po.tipo_professor = 'PROFESSOR'",nativeQuery=true)
+"and po.tipo_professor = 'PROFESSOR' and o.fechado = 'false'",nativeQuery=true)
     public List<ProfessorOferta> listarOfertasDoAluno();
-    //Integer id, Integer periodo_id
+    //Integer id
     
     @Query(value="select * from graduacao.professor_oferta as po join graduacao.oferta as o on po.oferta_id = o.id \n" +
-"where po.professor_id = 17 and o.periodo_letivo_id = 9",nativeQuery=true)
+"where po.professor_id = 17 and o.fechado = 'false'",nativeQuery=true)
     public List<ProfessorOferta> listarOfertasDoProfessor();
-    //Integer id, Integer periodo_id
+    //Integer id
 
     public Optional<ProfessorOferta> findById(Integer id);
 
