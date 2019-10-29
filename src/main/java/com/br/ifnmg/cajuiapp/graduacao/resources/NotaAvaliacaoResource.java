@@ -7,6 +7,7 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.NotaAvaliacao;
 import com.br.ifnmg.cajuiapp.graduacao.repository.NotaAvaliacaoRepository;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -56,8 +57,10 @@ public class NotaAvaliacaoResource {
     }
     
     @PostMapping()
-    public NotaAvaliacao cadastrarNotaAvaliacao(@RequestBody @Valid NotaAvaliacao notaavaliacao){
-        return er.save(notaavaliacao);
+    public void cadastrarNotaAvaliacao(@RequestBody List<NotaAvaliacao> notaavaliacao){
+        for(NotaAvaliacao nota : notaavaliacao){
+            er.save(nota);
+        }
     }
     
     @DeleteMapping()
