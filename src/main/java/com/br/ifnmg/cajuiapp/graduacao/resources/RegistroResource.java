@@ -7,9 +7,11 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.Registro;
 import com.br.ifnmg.cajuiapp.graduacao.repository.RegistroRepository;
+import java.util.Date;
 import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +45,12 @@ public class RegistroResource {
     public @ResponseBody Iterable listaRegistroDaOferta(@PathVariable("id") Integer id){
         Iterable<Registro> listaRegistroDaOferta = er.listarRegistroDaOferta(id);
         return listaRegistroDaOferta;
+    }
+    
+    @GetMapping(produces="application/json", value="/oferta/{id}/data/{data}/desc/{desc}")
+    public @ResponseBody Iterable listaRegistroMesmaData(@PathVariable("id") Integer id, @PathVariable("data") @DateTimeFormat(pattern="yyyy-MM-dd") Date data, @PathVariable("desc") String desc){
+        Iterable<Registro> listaRegistroMesmaData = er.listarRegistrosMesmaData(data, desc, id);
+        return listaRegistroMesmaData;
     }
     
     @GetMapping(produces="application/json", value="/{id}")

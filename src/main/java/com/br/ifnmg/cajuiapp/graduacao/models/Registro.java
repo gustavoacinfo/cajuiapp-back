@@ -6,6 +6,8 @@
 package com.br.ifnmg.cajuiapp.graduacao.models;
 
 import java.io.Serializable;
+import java.time.LocalTime;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,13 +33,13 @@ public class Registro implements Serializable {
     @JoinColumn(name = "professor_oferta_id")
     private ProfessorOferta professorOfertaId;
     
-    private String data;
+    private Date data;
     
     @Column(name = "hora_inicio")
-    private String horaInicio;
+    private LocalTime horaInicio;
     
     @Column(name = "hora_fim")
-    private String horaFim;
+    private LocalTime horaFim;
     
     private String descricao;
     
@@ -72,27 +74,27 @@ public class Registro implements Serializable {
         this.professorOfertaId = professorOfertaId;
     }
 
-    public String getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(Date data) {
         this.data = data;
     }
 
-    public String getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(String horaInicio) {
+    public void setHoraInicio(LocalTime horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public String getHoraFim() {
+    public LocalTime getHoraFim() {
         return horaFim;
     }
 
-    public void setHoraFim(String horaFim) {
+    public void setHoraFim(LocalTime horaFim) {
         this.horaFim = horaFim;
     }
 

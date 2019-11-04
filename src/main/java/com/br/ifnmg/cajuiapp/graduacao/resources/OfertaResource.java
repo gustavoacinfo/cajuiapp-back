@@ -7,6 +7,7 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.Oferta;
 import com.br.ifnmg.cajuiapp.graduacao.repository.OfertaRepository;
+import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,6 +35,12 @@ public class OfertaResource {
     @GetMapping(produces="application/json")
     public @ResponseBody Iterable listaOfertas(){
         Iterable<Oferta> listaOfertas = er.findAll();
+        return listaOfertas;
+    }
+    
+    @GetMapping(produces="application/json", value="/{id}")
+    public @ResponseBody Optional<Oferta> listaOfertasId(@PathVariable("id") Integer id){
+        Optional<Oferta> listaOfertas = er.findById(id);
         return listaOfertas;
     }
     
