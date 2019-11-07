@@ -8,13 +8,13 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 import com.br.ifnmg.cajuiapp.graduacao.models.NotaAvaliacao;
 import com.br.ifnmg.cajuiapp.graduacao.repository.NotaAvaliacaoRepository;
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -56,8 +56,21 @@ public class NotaAvaliacaoResource {
         return somaPontosObtidos;
     }
     
+    @GetMapping(produces="application/json", value="/avaliacao/{id}") ///aluno/{aluno_id}
+    public @ResponseBody Iterable notasDaAvaliacao(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
+        Iterable<NotaAvaliacao> notasDaAvaliacao = er.notasDaAvaliacao(id); //aluno_id
+        return notasDaAvaliacao;
+    }
+    
     @PostMapping()
     public void cadastrarNotaAvaliacao(@RequestBody List<NotaAvaliacao> notaavaliacao){
+        for(NotaAvaliacao nota : notaavaliacao){
+            er.save(nota);
+        }
+    }
+    
+    @PutMapping()
+    public void atualizarNotaAvaliacao(@RequestBody List<NotaAvaliacao> notaavaliacao){
         for(NotaAvaliacao nota : notaavaliacao){
             er.save(nota);
         }

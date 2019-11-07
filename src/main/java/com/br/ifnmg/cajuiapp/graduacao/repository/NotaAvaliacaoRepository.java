@@ -18,7 +18,7 @@ public interface NotaAvaliacaoRepository extends JpaRepository<NotaAvaliacao, St
     
      @Query(value="select * from graduacao.nota_avaliacao as na join graduacao.avaliacao as av on na.avaliacao_id = av.id \n" +
 "join graduacao.matricula as m on na.matricula_id = m.id join graduacao.contrato as c on m.contrato_id = c.id\n" +
-"where av.oferta_id = ?1",nativeQuery=true)
+"where av.oferta_id = ?1 and c.aluno_id = 24",nativeQuery=true)
     public List<NotaAvaliacao> listaAvaliacoesDoAluno(Integer id);//, Integer aluno_id
     
     @Query(value="select sum(av.max_pontos) from graduacao.nota_avaliacao as na join graduacao.avaliacao as av on na.avaliacao_id = av.id \n" +
@@ -30,6 +30,10 @@ public interface NotaAvaliacaoRepository extends JpaRepository<NotaAvaliacao, St
 "join graduacao.matricula as m on na.matricula_id = m.id join graduacao.contrato as c on m.contrato_id = c.id\n" +
 "where av.oferta_id = ?1 and c.aluno_id = 24",nativeQuery=true)
     public List<Integer> somaPontosObtidos(Integer id);//, Integer aluno_id
+    
+    @Query(value="select * from graduacao.nota_avaliacao as na where na.avaliacao_id = ?",nativeQuery=true)
+    public List<NotaAvaliacao> notasDaAvaliacao(Integer id);//, Integer aluno_id
+    
     
     
     

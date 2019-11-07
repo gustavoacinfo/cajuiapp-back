@@ -26,7 +26,7 @@ public class Falta implements Serializable{
     // Obeservar pois a tabela "Falta" no banco não possui ID
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     
     //Verificar esse relacionamento
