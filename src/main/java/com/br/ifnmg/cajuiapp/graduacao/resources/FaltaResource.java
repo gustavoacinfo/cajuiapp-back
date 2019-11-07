@@ -6,7 +6,6 @@
 package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.Falta;
-import com.br.ifnmg.cajuiapp.graduacao.models.Oferta;
 import com.br.ifnmg.cajuiapp.graduacao.repository.FaltaRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,8 +44,19 @@ public class FaltaResource {
         return listarFaltasDoAluno;
     }
     
+    @GetMapping(produces="application/json", value="/registro/{id}") ///aluno/{aluno_id}
+    public @ResponseBody Iterable faltasDoRegistro(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
+        Iterable<Falta> faltasDoRegistro = er.faltasDoRegistro(id); //aluno_id
+        return faltasDoRegistro;
+    }
+    
     @PostMapping()
     public Falta cadastrarFalta(@RequestBody @Valid Falta falta){
+        return er.save(falta);
+    }
+    
+    @PutMapping()
+    public Falta atualizarFalta(@RequestBody @Valid Falta falta){
         return er.save(falta);
     }
     

@@ -21,4 +21,7 @@ public interface FaltaRepository extends JpaRepository<Falta, String> {
 "on f.matricula_id = m.id join graduacao.contrato as c on c.id = m.contrato_id where po.oferta_id = ?1 and c.aluno_id = 24 ",nativeQuery=true)
     public List<Falta> contaFaltasDoAluno(Integer id);
     //, Integer aluno_id
+    
+    @Query(value="select * from graduacao.falta as fa where fa.registro_id = ?",nativeQuery=true)
+    public List<Falta> faltasDoRegistro(Integer id);//, Integer aluno_id
 }
