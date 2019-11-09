@@ -6,9 +6,16 @@
 package com.br.ifnmg.cajuiapp.basico.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,11 +27,12 @@ import javax.persistence.Table;
  *
  * @author Gustavo
  */
+
 @Entity
 @Table(name="user", schema="basico")
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario implements Serializable{
-  
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -33,6 +41,7 @@ public class Usuario implements Serializable{
     private String apelido;
     private boolean status;
     
+    @JsonIgnore
     @Column(name = "auth_key")
     private String authKey;
     
@@ -43,6 +52,14 @@ public class Usuario implements Serializable{
     private Integer createdAt;
     @Column(name="updated_at")
     private Integer updatedAt;
+    
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "perfis", schema="basico")
+    private Set<Integer> perfis = new HashSet<>();
+
+    public Usuario() {
+        addPerfil(Perfil.PROFESSOR);
+    }
 
     public Integer getId() {
         return id;
@@ -108,8 +125,18 @@ public class Usuario implements Serializable{
     public void setUpdatedAt(Integer updatedAt) {
         this.updatedAt = updatedAt;
     }
+    
+    public void setPerfis(Set<Integer> perfis) {
+        this.perfis = perfis;
+    }
 
-   
+    public Set<Perfil> getPerfis() {
+        return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+    }
+
+    public void addPerfil(Perfil perfil) {
+        perfis.add(perfil.getCod());
+    }
  
     
 }

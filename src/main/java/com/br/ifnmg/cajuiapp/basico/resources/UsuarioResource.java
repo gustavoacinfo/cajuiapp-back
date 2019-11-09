@@ -9,6 +9,7 @@ import com.br.ifnmg.cajuiapp.basico.models.Usuario;
 import com.br.ifnmg.cajuiapp.basico.repository.UsuarioRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,6 +32,9 @@ public class UsuarioResource {
     @Autowired
     private UsuarioRepository er;
     
+//    @Autowired
+//    private BCryptPasswordEncoder pe;
+    
     @GetMapping(produces="application/json")
     public @ResponseBody Iterable listaUsuarios(){
         Iterable<Usuario> listaUsuarios = er.findAll();
@@ -48,6 +52,7 @@ public class UsuarioResource {
     
     @PostMapping()
     public Usuario cadastrarUsuario(@RequestBody @Valid Usuario usuario){
+       //usuario.setAuthKey(pe.encode(usuario.getAuthKey()));
         return er.save(usuario);
     }
     
