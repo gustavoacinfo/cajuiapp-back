@@ -7,6 +7,7 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.Falta;
 import com.br.ifnmg.cajuiapp.graduacao.repository.FaltaRepository;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -51,19 +52,22 @@ public class FaltaResource {
     }
     
     @PostMapping()
-    public Falta cadastrarFalta(@RequestBody @Valid Falta falta){
-        return er.save(falta);
+    public void cadastrarFalta(@RequestBody List<Falta> faltas){
+        for(Falta falta : faltas){
+            er.save(falta);
+        }
     }
     
     @PutMapping()
-    public Falta atualizarFalta(@RequestBody @Valid Falta falta){
-        return er.save(falta);
+    public void atualizarFalta(@RequestBody List<Falta> faltas){
+        for(Falta falta : faltas){
+            er.save(falta);
+        }
     }
     
     @DeleteMapping()
-    public Falta deletaFalta(@RequestBody Falta falta){
+    public void deletaFalta(@RequestBody Falta falta){
         er.delete(falta);
-        return falta;
     }
     
     

@@ -12,11 +12,13 @@ import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -64,10 +66,15 @@ public class RegistroResource {
         return er.save(registro);
     }
     
-    @DeleteMapping()
-    public Registro deletaRegistro(@RequestBody Registro registro){
-        er.delete(registro);
-        return registro;
+    @PutMapping()
+    public Registro atualizarRegistro(@RequestBody @Valid Registro registro){
+        return er.save(registro);
+    }
+    
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable(value="id") String id){
+        er.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
     
 }

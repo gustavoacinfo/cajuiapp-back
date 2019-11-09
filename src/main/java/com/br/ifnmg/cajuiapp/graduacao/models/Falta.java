@@ -47,6 +47,8 @@ public class Falta implements Serializable{
     @Column(name="updated_by")
     private Integer updatedBy;
     
+    private boolean presenca;
+    
  
 // * @property BasicoUser $updatedBy
 // * @property BasicoUser $createdBy
@@ -107,6 +109,14 @@ public class Falta implements Serializable{
 
     public void setUpdatedBy(Integer updatedBy) {
         this.updatedBy = updatedBy;
+    }
+
+    public boolean getPresenca() {
+        return presenca;
+    }
+
+    public void setPresenca(boolean presenca) {
+        this.presenca = presenca;
     }
     
     

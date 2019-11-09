@@ -61,9 +61,8 @@ public class AvaliacaoResource {
     }
     
     @DeleteMapping()
-    public Avaliacao deletaAvaliacao(@RequestBody Avaliacao avaliacao){
+    public void deletaAvaliacao(@RequestBody Avaliacao avaliacao){
         er.delete(avaliacao);
-        return avaliacao;
     }
     
 }

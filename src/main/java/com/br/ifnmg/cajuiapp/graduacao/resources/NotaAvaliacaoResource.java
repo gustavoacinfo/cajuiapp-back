@@ -77,9 +77,8 @@ public class NotaAvaliacaoResource {
     }
     
     @DeleteMapping()
-    public NotaAvaliacao deletaNotaAvaliacao(@RequestBody NotaAvaliacao notaavaliacao){
+    public void deletaNotaAvaliacao(@RequestBody NotaAvaliacao notaavaliacao){
         er.delete(notaavaliacao);
-        return notaavaliacao;
     }
     
 }

@@ -23,5 +23,7 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, String>{
     @Query(value="select sum(av.max_pontos) from graduacao.avaliacao as av join graduacao.professor_oferta as po on av.oferta_id = po.oferta_id\n" +
 "where po.professor_id = 17 and po.oferta_id = ?",nativeQuery=true)
     public List<Integer> somaPontosDistribuidos(Integer id);//, Integer aluno_id
+
+    public void deleteById(Integer id);
     
 }
