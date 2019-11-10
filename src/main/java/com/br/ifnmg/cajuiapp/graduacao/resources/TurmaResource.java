@@ -7,14 +7,9 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.Turma;
 import com.br.ifnmg.cajuiapp.graduacao.repository.TurmaRepository;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/turma")
 public class TurmaResource {
@@ -41,17 +36,6 @@ public class TurmaResource {
     public @ResponseBody Iterable listarTurmaDoAluno(@PathVariable("id") Integer id){
         Iterable<Turma> listaTurmaDoAluno = er.listarTurmaDoAluno(id);
         return listaTurmaDoAluno;
-    }
-    
-    @PostMapping()
-    public Turma cadastrarTurma(@RequestBody @Valid Turma turma){
-        return er.save(turma);
-    }
-    
-    @DeleteMapping()
-    public Turma deletaTurma(@RequestBody Turma turma){
-        er.delete(turma);
-        return turma;
     }
     
 }

@@ -7,15 +7,10 @@ package com.br.ifnmg.cajuiapp.basico.resources;
 
 import com.br.ifnmg.cajuiapp.basico.models.Usuario;
 import com.br.ifnmg.cajuiapp.basico.repository.UsuarioRepository;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioResource {
@@ -49,17 +44,5 @@ public class UsuarioResource {
         return ResponseEntity.ok().body(usuario);
     }
     
-    
-    @PostMapping()
-    public Usuario cadastrarUsuario(@RequestBody @Valid Usuario usuario){
-       //usuario.setAuthKey(pe.encode(usuario.getAuthKey()));
-        return er.save(usuario);
-    }
-    
-    @DeleteMapping()
-    public Usuario deletaUsuario(@RequestBody Usuario usuario){
-        er.delete(usuario);
-        return usuario;
-    }
     
 }

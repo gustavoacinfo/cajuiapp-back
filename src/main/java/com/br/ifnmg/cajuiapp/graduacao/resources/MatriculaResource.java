@@ -7,14 +7,10 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.Matricula;
 import com.br.ifnmg.cajuiapp.graduacao.repository.MatriculaRepository;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/matricula")
 public class MatriculaResource {
@@ -41,17 +36,6 @@ public class MatriculaResource {
     public @ResponseBody Iterable listaMatriculasDaOferta(@PathVariable("id") Integer id){
         Iterable<Matricula> listaMatriculasDaOferta = er.listarMatriculasDaOferta(id);
         return listaMatriculasDaOferta;
-    }
-    
-    @PostMapping()
-    public Matricula cadastrarMatricula(@RequestBody @Valid Matricula matricula){
-        return er.save(matricula);
-    }
-    
-    @DeleteMapping()
-    public Matricula deletaMatricula(@RequestBody Matricula matricula){
-        er.delete(matricula);
-        return matricula;
     }
     
     

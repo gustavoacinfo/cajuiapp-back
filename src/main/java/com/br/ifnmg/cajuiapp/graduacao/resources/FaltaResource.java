@@ -8,9 +8,8 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 import com.br.ifnmg.cajuiapp.graduacao.models.Falta;
 import com.br.ifnmg.cajuiapp.graduacao.repository.FaltaRepository;
 import java.util.List;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/falta")
 public class FaltaResource {
@@ -51,6 +49,7 @@ public class FaltaResource {
         return faltasDoRegistro;
     }
     
+    @PreAuthorize("hasAnyRole('PROFESSOR')")
     @PostMapping()
     public void cadastrarFalta(@RequestBody List<Falta> faltas){
         for(Falta falta : faltas){
@@ -58,6 +57,7 @@ public class FaltaResource {
         }
     }
     
+    @PreAuthorize("hasAnyRole('PROFESSOR')")
     @PutMapping()
     public void atualizarFalta(@RequestBody List<Falta> faltas){
         for(Falta falta : faltas){
@@ -65,6 +65,7 @@ public class FaltaResource {
         }
     }
     
+    @PreAuthorize("hasAnyRole('PROFESSOR')")
     @DeleteMapping()
     public void deletaFalta(@RequestBody Falta falta){
         er.delete(falta);

@@ -9,7 +9,7 @@ import com.br.ifnmg.cajuiapp.graduacao.models.NotaAvaliacao;
 import com.br.ifnmg.cajuiapp.graduacao.repository.NotaAvaliacaoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,7 +24,6 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
 @RestController
 @RequestMapping("/notaavaliacao")
 public class NotaAvaliacaoResource {
@@ -62,6 +61,7 @@ public class NotaAvaliacaoResource {
         return notasDaAvaliacao;
     }
     
+    @PreAuthorize("hasAnyRole('PROFESSOR')")
     @PostMapping()
     public void cadastrarNotaAvaliacao(@RequestBody List<NotaAvaliacao> notaavaliacao){
         for(NotaAvaliacao nota : notaavaliacao){
@@ -69,6 +69,7 @@ public class NotaAvaliacaoResource {
         }
     }
     
+    @PreAuthorize("hasAnyRole('PROFESSOR')")
     @PutMapping()
     public void atualizarNotaAvaliacao(@RequestBody List<NotaAvaliacao> notaavaliacao){
         for(NotaAvaliacao nota : notaavaliacao){
@@ -76,6 +77,7 @@ public class NotaAvaliacaoResource {
         }
     }
     
+    @PreAuthorize("hasAnyRole('PROFESSOR')")
     @DeleteMapping()
     public void deletaNotaAvaliacao(@RequestBody NotaAvaliacao notaavaliacao){
         er.delete(notaavaliacao);

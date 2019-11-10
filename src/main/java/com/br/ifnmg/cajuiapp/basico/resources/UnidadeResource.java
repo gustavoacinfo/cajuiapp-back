@@ -7,13 +7,8 @@ package com.br.ifnmg.cajuiapp.basico.resources;
 
 import com.br.ifnmg.cajuiapp.basico.models.Unidade;
 import com.br.ifnmg.cajuiapp.basico.repository.UnidadeRepository;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/unidade")
 public class UnidadeResource {
@@ -35,17 +30,5 @@ public class UnidadeResource {
         Iterable<Unidade> listaUnidades = er.findAll();
         return listaUnidades;
     }
-    
-    @PostMapping()
-    public Unidade cadastrarUnidade(@RequestBody @Valid Unidade unidade){
-        return er.save(unidade);
-    }
-    
-    @DeleteMapping()
-    public Unidade deletaProfessor(@RequestBody Unidade unidade){
-        er.delete(unidade);
-        return unidade;
-    }
-    
     
 }

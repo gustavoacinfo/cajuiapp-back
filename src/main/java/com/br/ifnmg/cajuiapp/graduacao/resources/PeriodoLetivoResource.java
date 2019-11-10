@@ -7,13 +7,9 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.PeriodoLetivo;
 import com.br.ifnmg.cajuiapp.graduacao.repository.PeriodoLetivoRepository;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,17 +30,6 @@ public class PeriodoLetivoResource {
     public @ResponseBody Iterable listaPeriodosLetivos(){
         Iterable<PeriodoLetivo> listaPeriodosLetivos = er.findAll();
         return listaPeriodosLetivos;
-    }
-    
-    @PostMapping()
-    public PeriodoLetivo cadastrarPeriodoLetivo(@RequestBody @Valid PeriodoLetivo periodoletivo){
-        return er.save(periodoletivo);
-    }
-    
-    @DeleteMapping()
-    public PeriodoLetivo deletaPeriodoLetivo(@RequestBody PeriodoLetivo periodoletivo){
-        er.delete(periodoletivo);
-        return periodoletivo;
     }
     
 }

@@ -8,14 +8,9 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 import com.br.ifnmg.cajuiapp.graduacao.models.ProfessorOferta;
 import com.br.ifnmg.cajuiapp.graduacao.repository.ProfessorOfertaRepository;
 import java.util.Optional;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/professoroferta")
 public class ProfessorOfertaResource {
@@ -57,17 +52,5 @@ public class ProfessorOfertaResource {
         Iterable<ProfessorOferta> listarOfertasDoProfessor = er.listarOfertasDoProfessor(); //id, periodo_id
         return listarOfertasDoProfessor;
     }
-    
-    @PostMapping()
-    public ProfessorOferta cadastrarProfessorOferta(@RequestBody @Valid ProfessorOferta professoroferta){
-        return er.save(professoroferta);
-    }
-    
-    @DeleteMapping()
-    public ProfessorOferta deletaProfessorOferta(@RequestBody ProfessorOferta professoroferta){
-        er.delete(professoroferta);
-        return professoroferta;
-    }
-    
     
 }

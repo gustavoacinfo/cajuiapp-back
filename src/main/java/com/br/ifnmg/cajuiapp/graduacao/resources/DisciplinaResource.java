@@ -7,14 +7,10 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 
 import com.br.ifnmg.cajuiapp.graduacao.models.Disciplina;
 import com.br.ifnmg.cajuiapp.graduacao.repository.DisciplinaRepository;
-import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/disciplina")
 public class DisciplinaResource {
@@ -48,17 +44,6 @@ public class DisciplinaResource {
     public @ResponseBody Iterable listaDisciplinasPorProfessor(@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id){
         Iterable<Disciplina> listaDisciplinasPorProfessor = er.listarDisciplinaDoProfessor(id, periodo_id);
         return listaDisciplinasPorProfessor;
-    }
-    
-    @PostMapping()
-    public Disciplina cadastrarDisciplina(@RequestBody @Valid Disciplina disciplina){
-        return er.save(disciplina);
-    }
-    
-    @DeleteMapping()
-    public Disciplina deletaDisciplina(@RequestBody Disciplina disciplina){
-        er.delete(disciplina);
-        return disciplina;
     }
     
 }

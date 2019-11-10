@@ -7,14 +7,8 @@ package com.br.ifnmg.cajuiapp.basico.resources;
 
 import com.br.ifnmg.cajuiapp.basico.models.Pessoa;
 import com.br.ifnmg.cajuiapp.basico.repository.PessoaRepository;
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  * @author Gustavo
  */
-@CrossOrigin
+
 @RestController
 @RequestMapping("/pessoa")
 public class PessoaResource {
@@ -37,14 +31,4 @@ public class PessoaResource {
         return listaPessoas;
     }
     
-    @PostMapping()
-    public Pessoa cadastrarPessoa(@RequestBody @Valid Pessoa pessoa){
-        return er.save(pessoa);
-    }
-    
-    @DeleteMapping()
-    public Pessoa deletaPessoa(@RequestBody Pessoa pessoa){
-        er.delete(pessoa);
-        return pessoa;
-    }
 }
