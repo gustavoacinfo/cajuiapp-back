@@ -9,7 +9,7 @@ import com.br.ifnmg.cajuiapp.basico.models.Usuario;
 import com.br.ifnmg.cajuiapp.basico.repository.UsuarioRepository;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -44,9 +44,9 @@ public class UsuarioResource {
     
     
     @GetMapping(produces="application/json", value="/{username}")
-    public @ResponseBody Iterable listaUsuarioPorUsername(@PathVariable("username") String username){
-        Iterable<Integer> listaUsuarioPorUsername = er.findByEmail(username);
-        return listaUsuarioPorUsername;
+    public ResponseEntity<Usuario> listaUsuarioPorUsername(@PathVariable("username") String username){
+        Usuario usuario = er.findByUsername(username);
+        return ResponseEntity.ok().body(usuario);
     }
     
     
