@@ -6,6 +6,7 @@
 package com.br.ifnmg.cajuiapp.config;
 
 import com.br.ifnmg.cajuiapp.security.JWTAuthenticationFilter;
+import com.br.ifnmg.cajuiapp.security.JWTAuthorizationFilter;
 import com.br.ifnmg.cajuiapp.security.JWTUtil;
 import java.util.Arrays;
 import org.hibernate.cfg.Environment;
@@ -49,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                         "/matricula/**",
                         "/oferta/**",
                         "/professoroferta/**",
-                        "/notaavaliacao/**"
+                       // "/notaavaliacao/**"
     };
     
     @Override
@@ -65,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                         .antMatchers(PUBLIC_MATCHERS).permitAll()
 			.anyRequest().authenticated();
                 http.addFilter(new JWTAuthenticationFilter(authenticationManager(), jwtUtil));
+                http.addFilter(new JWTAuthorizationFilter(authenticationManager(), jwtUtil, userDetailsService));
                 http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         }
         
