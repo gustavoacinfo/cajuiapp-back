@@ -19,14 +19,14 @@ import org.springframework.data.jpa.repository.Query;
 public interface ProfessorOfertaRepository extends JpaRepository<ProfessorOferta, String>{
     
      @Query(value="select * from graduacao.professor_oferta as po join graduacao.oferta as o on po.oferta_id = o.id join graduacao.matricula as m on o.id = m.oferta_id join graduacao.contrato as c\n" +
-"on m.contrato_id = c.id join basico.aluno as a on c.aluno_id = a.id where a.id = 24 and m.estado_matricula = 'MATRICULADO'\n" +
+"on m.contrato_id = c.id join basico.aluno as a on c.aluno_id = a.id where a.id = ? and m.estado_matricula = 'MATRICULADO'\n" +
 "and po.tipo_professor = 'PROFESSOR' and o.fechado = 'false'",nativeQuery=true)
-    public List<ProfessorOferta> listarOfertasDoAluno();
+    public List<ProfessorOferta> listarOfertasDoAluno(Integer id);
     //Integer id
     
     @Query(value="select * from graduacao.professor_oferta as po join graduacao.oferta as o on po.oferta_id = o.id \n" +
-"where po.professor_id = 17 and o.fechado = 'false'",nativeQuery=true)
-    public List<ProfessorOferta> listarOfertasDoProfessor();
+"where po.professor_id = ? and o.fechado = 'false'",nativeQuery=true)
+    public List<ProfessorOferta> listarOfertasDoProfessor(Integer id);
     //Integer id
 
     public Optional<ProfessorOferta> findById(Integer id);

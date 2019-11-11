@@ -41,15 +41,15 @@ public class ProfessorOfertaResource {
     
     
     
-    @GetMapping(produces="application/json", value="/aluno") //"/aluno/{id}/periodo/{periodo_id}"
-    public @ResponseBody Iterable listaOfertasDoAluno(){ //@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id
-        Iterable<ProfessorOferta> listarOfertasDoAluno = er.listarOfertasDoAluno(); //id, periodo_id
+    @GetMapping(produces="application/json", value="/aluno/{id}") //"/aluno/{id}/periodo/{periodo_id}"
+    public @ResponseBody Iterable listaOfertasDoAluno(@PathVariable("id") Integer id){ //, @PathVariable("periodo_id") Integer periodo_id
+        Iterable<ProfessorOferta> listarOfertasDoAluno = er.listarOfertasDoAluno(id); //id, periodo_id
         return listarOfertasDoAluno;
     }
     
-    @GetMapping(produces="application/json", value="/professor") //"/aluno/{id}/periodo/{periodo_id}"
-    public @ResponseBody Iterable listaOfertasDoProfessor(){ //@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id
-        Iterable<ProfessorOferta> listarOfertasDoProfessor = er.listarOfertasDoProfessor(); //id, periodo_id
+    @GetMapping(produces="application/json", value="/professor/{id}") //"/aluno/{id}/periodo/{periodo_id}"
+    public @ResponseBody Iterable listaOfertasDoProfessor(@PathVariable("id") Integer id){ //, @PathVariable("periodo_id") Integer periodo_id
+        Iterable<ProfessorOferta> listarOfertasDoProfessor = er.listarOfertasDoProfessor(id); //id, periodo_id
         return listarOfertasDoProfessor;
     }
     

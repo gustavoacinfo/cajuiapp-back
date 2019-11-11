@@ -37,27 +37,21 @@ public class NotaAvaliacaoResource {
         return listaNotaAvaliacoes;
     }
     
-    @GetMapping(produces="application/json", value="/oferta/{id}") ///aluno/{aluno_id}
-    public @ResponseBody Iterable listaAvaliacoesDoAluno(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
-        Iterable<NotaAvaliacao> listarAvaliacoesDoAluno = er.listaAvaliacoesDoAluno(id); //aluno_id
+    @GetMapping(produces="application/json", value="/oferta/{id}/aluno/{aId}") 
+    public @ResponseBody Iterable listaAvaliacoesDoAluno(@PathVariable("id") Integer id, @PathVariable("aId") Integer alunoid){ 
+        Iterable<NotaAvaliacao> listarAvaliacoesDoAluno = er.listaAvaliacoesDoAluno(id, alunoid);
         return listarAvaliacoesDoAluno;
     }
     
-    @GetMapping(produces="application/json", value="/distribuidos/{id}") ///aluno/{aluno_id}
-    public @ResponseBody Iterable somaPontosDistribuidos(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
-        Iterable<Integer> somaPontosDistribuidos = er.somaPontosDistribuidos(id); //aluno_id
-        return somaPontosDistribuidos;
-    }
-    
-    @GetMapping(produces="application/json", value="/obtidos/{id}") ///aluno/{aluno_id}
-    public @ResponseBody Iterable somaPontosObtidos(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
-        Iterable<Integer> somaPontosObtidos = er.somaPontosObtidos(id); //aluno_id
+    @GetMapping(produces="application/json", value="/obtidos/{id}/aluno/{aId}") 
+    public @ResponseBody Iterable somaPontosObtidos(@PathVariable("id") Integer id, @PathVariable("aId") Integer alunoid){ 
+        Iterable<Integer> somaPontosObtidos = er.somaPontosObtidos(id, alunoid); 
         return somaPontosObtidos;
     }
     
-    @GetMapping(produces="application/json", value="/avaliacao/{id}") ///aluno/{aluno_id}
-    public @ResponseBody Iterable notasDaAvaliacao(@PathVariable("id") Integer id){ //, @PathVariable("aluno_id") Integer aluno_id 
-        Iterable<NotaAvaliacao> notasDaAvaliacao = er.notasDaAvaliacao(id); //aluno_id
+    @GetMapping(produces="application/json", value="/avaliacao/{id}") 
+    public @ResponseBody Iterable notasDaAvaliacao(@PathVariable("id") Integer id){ 
+        Iterable<NotaAvaliacao> notasDaAvaliacao = er.notasDaAvaliacao(id); 
         return notasDaAvaliacao;
     }
     

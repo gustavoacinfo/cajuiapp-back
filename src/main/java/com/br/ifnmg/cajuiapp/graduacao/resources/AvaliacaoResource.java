@@ -37,15 +37,15 @@ public class AvaliacaoResource {
         return listaAvaliacoes;
     }
     
-    @GetMapping(produces="application/json", value="/oferta/{id}")
-    public @ResponseBody Iterable listaAvaliacaoDaOferta(@PathVariable("id") Integer id){
-        Iterable<Avaliacao> listaAvaliacaoDaOferta = er.listarAvaliacaoDaOferta(id);
+    @GetMapping(produces="application/json", value="/oferta/{id}/prof/{pId}")
+    public @ResponseBody Iterable listaAvaliacaoDaOferta(@PathVariable("id") Integer id, @PathVariable("pId") Integer pId){
+        Iterable<Avaliacao> listaAvaliacaoDaOferta = er.listarAvaliacaoDaOferta(pId, id);
         return listaAvaliacaoDaOferta;
     }
     
-    @GetMapping(produces="application/json", value="/distribuidos/{id}") 
-    public @ResponseBody Iterable somaPontosDistribuidos(@PathVariable("id") Integer id){ 
-        Iterable<Integer> somaPontosDistribuidos = er.somaPontosDistribuidos(id); 
+    @GetMapping(produces="application/json", value="/distribuidos/{id}/prof/{pId}") 
+    public @ResponseBody Iterable somaPontosDistribuidos(@PathVariable("id") Integer id, @PathVariable("pId") Integer pId){ 
+        Iterable<Integer> somaPontosDistribuidos = er.somaPontosDistribuidos(pId, id); 
         return somaPontosDistribuidos;
     }
     

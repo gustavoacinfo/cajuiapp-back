@@ -8,9 +8,7 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 import com.br.ifnmg.cajuiapp.graduacao.models.Disciplina;
 import com.br.ifnmg.cajuiapp.graduacao.repository.DisciplinaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,19 +29,6 @@ public class DisciplinaResource {
     public @ResponseBody Iterable listaDisciplinas(){
         Iterable<Disciplina> listaDisciplinas = er.findAll();
         return listaDisciplinas;
-    }
-    
-    
-    @GetMapping(produces="application/json", value="/oferta/{id}")
-    public @ResponseBody Iterable listaDisciplinasDoAluno(@PathVariable("id") Integer id){
-        Iterable<Disciplina> listaDisciplinasDoAluno = er.listarDisciplinasDoAluno(id);
-        return listaDisciplinasDoAluno;
-    }
-    
-    @GetMapping(produces="application/json", value="/professor/{id}/periodo/{periodo_id}")
-    public @ResponseBody Iterable listaDisciplinasPorProfessor(@PathVariable("id") Integer id, @PathVariable("periodo_id") Integer periodo_id){
-        Iterable<Disciplina> listaDisciplinasPorProfessor = er.listarDisciplinaDoProfessor(id, periodo_id);
-        return listaDisciplinasPorProfessor;
     }
     
 }

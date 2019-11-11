@@ -17,12 +17,12 @@ import org.springframework.data.jpa.repository.Query;
 public interface AvaliacaoRepository extends JpaRepository<Avaliacao, String>{
     
     @Query(value="select * from graduacao.avaliacao as av join graduacao.professor_oferta as po on av.oferta_id = po.oferta_id\n" +
-"where po.professor_id = 17 and po.oferta_id = ? order by av.id desc",nativeQuery=true)
-    public List<Avaliacao> listarAvaliacaoDaOferta(Integer id);
+"where po.professor_id = ?1 and po.oferta_id = ?2 order by av.id desc",nativeQuery=true)
+    public List<Avaliacao> listarAvaliacaoDaOferta(Integer pId, Integer id);
     
     @Query(value="select sum(av.max_pontos) from graduacao.avaliacao as av join graduacao.professor_oferta as po on av.oferta_id = po.oferta_id\n" +
-"where po.professor_id = 17 and po.oferta_id = ?",nativeQuery=true)
-    public List<Integer> somaPontosDistribuidos(Integer id);//, Integer aluno_id
+"where po.professor_id = ?1 and po.oferta_id = ?2",nativeQuery=true)
+    public List<Integer> somaPontosDistribuidos(Integer pId, Integer id);//, Integer aluno_id
 
     public void deleteById(Integer id);
     
