@@ -32,10 +32,5 @@ public class TurmaResource {
         return listaTurmas;
     }
     
-    @GetMapping(produces="application/json", value="/aluno/{id}")
-    public @ResponseBody Iterable listarTurmaDoAluno(@PathVariable("id") Integer id){
-        Iterable<Turma> listaTurmaDoAluno = er.listarTurmaDoAluno(id);
-        return listaTurmaDoAluno;
-    }
     
 }

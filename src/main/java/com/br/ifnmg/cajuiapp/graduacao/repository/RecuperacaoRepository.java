@@ -5,15 +5,15 @@
  */
 package com.br.ifnmg.cajuiapp.graduacao.repository;
 
-import com.br.ifnmg.cajuiapp.graduacao.models.Turma;
+import com.br.ifnmg.cajuiapp.graduacao.models.Recuperacao;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
  * @author Gustavo
  */
-public interface TurmaRepository extends JpaRepository<Turma, String>{
-    
-    
+public interface RecuperacaoRepository extends JpaRepository<Recuperacao, String> {
+
+    public Iterable<Recuperacao> findByMatriculaId(Integer id);
     
 }
