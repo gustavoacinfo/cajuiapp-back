@@ -24,5 +24,7 @@ public interface FaltaRepository extends JpaRepository<Falta, String> {
     
     @Query(value="select * from graduacao.falta as fa where fa.registro_id = ?",nativeQuery=true)
     public List<Falta> faltasDoRegistro(Integer id);//, Integer aluno_id
+
+    public Falta findById(Integer id);
     
 }

@@ -8,7 +8,6 @@ package com.br.ifnmg.cajuiapp.graduacao.resources;
 import com.br.ifnmg.cajuiapp.graduacao.models.Matricula;
 import com.br.ifnmg.cajuiapp.graduacao.repository.MatriculaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +35,12 @@ public class MatriculaResource {
     public @ResponseBody Iterable listaMatriculasDaOferta(@PathVariable("id") Integer id){
         Iterable<Matricula> listaMatriculasDaOferta = er.listarMatriculasDaOferta(id);
         return listaMatriculasDaOferta;
+    }
+    
+    @GetMapping(produces="application/json", value="/oferta/{id}/aluno/{aId}")
+    public Matricula listaMatriculaDoAluno(@PathVariable("id") Integer id, @PathVariable("aId") Integer aId){
+        Matricula listarMatriculasDoAluno = er.listarMatriculaDoAluno(id, aId);
+        return listarMatriculasDoAluno;
     }
     
     

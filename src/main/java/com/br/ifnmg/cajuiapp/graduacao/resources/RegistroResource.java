@@ -12,6 +12,7 @@ import java.util.Optional;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -55,8 +57,8 @@ public class RegistroResource {
     }
     
     @GetMapping(produces="application/json", value="/{id}")
-    public @ResponseBody Optional<Registro> listaRegistroId(@PathVariable("id") Integer id){
-        Optional<Registro> listaRegistroId = er.findById(id);
+    public @ResponseBody Registro listaRegistroId(@PathVariable("id") Integer id){
+        Registro listaRegistroId = er.findById(id);
         return listaRegistroId;
     }
     
@@ -72,11 +74,15 @@ public class RegistroResource {
         return er.save(registro);
     }
     
-    @PreAuthorize("hasAnyRole('PROFESSOR')")
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletar(@PathVariable(value="id") String id){
-        er.deleteById(id);
-        return ResponseEntity.noContent().build();
+     @PreAuthorize("hasAnyRole('PROFESSOR')")
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deletar(@PathVariable("id") Integer id) {
+      Registro registro = er.findById(id);
+        if (registro == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        er.delete(registro);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
 }

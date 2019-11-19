@@ -24,6 +24,9 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, String>{
 "where po.professor_id = ?1 and po.oferta_id = ?2",nativeQuery=true)
     public List<Integer> somaPontosDistribuidos(Integer pId, Integer id);//, Integer aluno_id
 
-    public void deleteById(Integer id);
+    public Avaliacao findById(Integer id);
+
+    
+
     
 }

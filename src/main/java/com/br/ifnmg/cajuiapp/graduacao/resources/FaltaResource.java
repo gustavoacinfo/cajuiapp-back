@@ -9,14 +9,16 @@ import com.br.ifnmg.cajuiapp.graduacao.models.Falta;
 import com.br.ifnmg.cajuiapp.graduacao.repository.FaltaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -66,9 +68,14 @@ public class FaltaResource {
     }
     
     @PreAuthorize("hasAnyRole('PROFESSOR')")
-    @DeleteMapping()
-    public void deletaFalta(@RequestBody Falta falta){
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deletar(@PathVariable("id") Integer id) {
+      Falta falta = er.findById(id);
+        if (falta == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         er.delete(falta);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
     

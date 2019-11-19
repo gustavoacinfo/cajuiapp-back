@@ -21,4 +21,11 @@ public interface MatriculaRepository extends JpaRepository<Matricula, String> {
 "where o.id = ? order by p.nome ",nativeQuery=true)
     public List<Matricula> listarMatriculasDaOferta(Integer id);
     
+    @Query(value="select * from graduacao.matricula as ma join graduacao.contrato as con on con.id = ma.contrato_id\n" +
+"join graduacao.oferta as ofe on ofe.id = ma.oferta_id join graduacao.curriculo as cur \n" +
+"on cur.id = ma.curriculo_id where ma.oferta_id = ?1 and con.aluno_id = ?2",nativeQuery=true)
+    public Matricula listarMatriculaDoAluno(Integer ofertaId, Integer alunoId);
+    
+    
+    
 }

@@ -26,6 +26,6 @@ public interface RegistroRepository extends JpaRepository<Registro, String>{
 "and re.professor_oferta_id = ?",nativeQuery=true)
     public List<Registro> listarRegistrosMesmaData(Date data, String desc, Integer oferta );
 
-    public Optional<Registro> findById(Integer id);
+    public Registro findById(Integer id);
     
 }

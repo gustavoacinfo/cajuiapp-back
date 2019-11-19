@@ -9,6 +9,8 @@ import com.br.ifnmg.cajuiapp.graduacao.models.NotaAvaliacao;
 import com.br.ifnmg.cajuiapp.graduacao.repository.NotaAvaliacaoRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -72,9 +75,14 @@ public class NotaAvaliacaoResource {
     }
     
     @PreAuthorize("hasAnyRole('PROFESSOR')")
-    @DeleteMapping()
-    public void deletaNotaAvaliacao(@RequestBody NotaAvaliacao notaavaliacao){
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> deletar(@PathVariable("id") Integer id) {
+      NotaAvaliacao notaavaliacao = er.findById(id);
+        if (notaavaliacao == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         er.delete(notaavaliacao);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     
 }

@@ -28,6 +28,8 @@ public interface NotaAvaliacaoRepository extends JpaRepository<NotaAvaliacao, St
     
     @Query(value="select * from graduacao.nota_avaliacao as na where na.avaliacao_id = ?",nativeQuery=true)
     public List<NotaAvaliacao> notasDaAvaliacao(Integer id);
+
+    public NotaAvaliacao findById(Integer id);
     
     
     
