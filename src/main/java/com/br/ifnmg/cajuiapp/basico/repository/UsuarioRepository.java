@@ -12,7 +12,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  *
  * @author Gustavo
  */
-public interface UsuarioRepository extends JpaRepository<Usuario, String> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
     public Usuario findByUsername(String username);
     

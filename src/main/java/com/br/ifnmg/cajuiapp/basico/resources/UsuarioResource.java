@@ -47,13 +47,13 @@ public class UsuarioResource {
     }
     
     @PutMapping()
-    public Usuario atualizarAvaliacao(@RequestBody @Valid Usuario usuario){
+    public Usuario atualizarUsuario(@RequestBody @Valid Usuario usuario){
         
+        Usuario atualizaUsuario = er.getOne(usuario.getId());
         String senha = usuario.getAuthKey();
-        usuario.setAuthKey(pe.encode(senha));
-      
-        System.out.println(usuario);
-        return er.save(usuario);
+        atualizaUsuario.setAuthKey(pe.encode(senha));
+        
+        return er.save(atualizaUsuario);
     }
     
     
