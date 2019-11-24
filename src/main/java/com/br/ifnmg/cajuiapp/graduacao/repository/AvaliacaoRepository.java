@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.Query;
  *
  * @author Gustavo
  */
-public interface AvaliacaoRepository extends JpaRepository<Avaliacao, String>{
+public interface AvaliacaoRepository extends JpaRepository<Avaliacao, Integer>{
     
     @Query(value="select * from graduacao.avaliacao as av join graduacao.professor_oferta as po on av.oferta_id = po.oferta_id\n" +
 "where po.professor_id = ?1 and po.oferta_id = ?2 order by av.id desc",nativeQuery=true)
@@ -24,8 +24,8 @@ public interface AvaliacaoRepository extends JpaRepository<Avaliacao, String>{
 "where po.professor_id = ?1 and po.oferta_id = ?2",nativeQuery=true)
     public List<Integer> somaPontosDistribuidos(Integer pId, Integer id);//, Integer aluno_id
 
-    public Avaliacao findById(Integer id);
-
+    @Query(value="select * from graduacao.avaliacao as av where av.id = ?",nativeQuery=true)
+    public Avaliacao avaliacaoPorId(Integer id);
     
 
     

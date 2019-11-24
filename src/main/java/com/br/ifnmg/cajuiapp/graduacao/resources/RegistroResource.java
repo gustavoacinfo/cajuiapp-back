@@ -9,6 +9,7 @@ import com.br.ifnmg.cajuiapp.graduacao.models.Registro;
 import com.br.ifnmg.cajuiapp.graduacao.repository.RegistroRepository;
 import java.util.Date;
 import java.util.Optional;
+import java.util.TimeZone;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;

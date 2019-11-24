@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -55,6 +54,8 @@ public class AvaliacaoResource {
     @PreAuthorize("hasAnyRole('PROFESSOR')")
     @PostMapping()
     public Avaliacao cadastrarAvaliacao(@RequestBody @Valid Avaliacao avaliacao){
+         System.out.println("################################");
+        System.out.println(avaliacao.getDataAvaliacao());
         return er.save(avaliacao);
     }
     
@@ -68,7 +69,7 @@ public class AvaliacaoResource {
     @PreAuthorize("hasAnyRole('PROFESSOR')")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deletar(@PathVariable("id") Integer id) {
-      Avaliacao avaliacao = er.findById(id);
+      Avaliacao avaliacao = er.avaliacaoPorId(id);
         if (avaliacao == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

@@ -40,8 +40,7 @@ public class Usuario implements Serializable{
     private String username;
     private String apelido;
     private boolean status;
-    
-    //@JsonIgnore
+   
     @Column(name = "auth_key")
     private String authKey;
     

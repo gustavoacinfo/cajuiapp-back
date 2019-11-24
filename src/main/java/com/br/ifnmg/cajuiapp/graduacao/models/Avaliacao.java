@@ -6,7 +6,7 @@
 package com.br.ifnmg.cajuiapp.graduacao.models;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,7 +33,7 @@ public class Avaliacao implements Serializable {
     private Oferta ofertaId;
     
     @Column(name = "data_avaliacao")
-    private Date dataAvaliacao;
+    private LocalDate dataAvaliacao;
     
     @Column(name = "max_pontos")
     private Integer maxPontos;
@@ -49,10 +49,6 @@ public class Avaliacao implements Serializable {
     @Column(name="updated_by")
     private Integer updatedBy;
     
-//    private Usuario createdBy;
-//    private Usuario updatedBy;
-//    private Oferta oferta;
-//    private Nota[] notas;
 
     public Integer getId() {
         return id;
@@ -70,11 +66,11 @@ public class Avaliacao implements Serializable {
         this.ofertaId = ofertaId;
     }
 
-    public Date getDataAvaliacao() {
+    public LocalDate getDataAvaliacao() {
         return dataAvaliacao;
     }
 
-    public void setDataAvaliacao(Date dataAvaliacao) {
+    public void setDataAvaliacao(LocalDate dataAvaliacao) {
         this.dataAvaliacao = dataAvaliacao;
     }
 

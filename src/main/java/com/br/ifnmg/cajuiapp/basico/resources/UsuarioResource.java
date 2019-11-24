@@ -49,10 +49,14 @@ public class UsuarioResource {
     @PutMapping()
     public Usuario atualizarUsuario(@RequestBody @Valid Usuario usuario){
         
+        
+        System.out.println("#########################");
+        System.out.println(usuario.getId());
         Usuario atualizaUsuario = er.getOne(usuario.getId());
         String senha = usuario.getAuthKey();
+        System.out.println("#########################");
+        System.out.println(senha);
         atualizaUsuario.setAuthKey(pe.encode(senha));
-        
         return er.save(atualizaUsuario);
     }
     
