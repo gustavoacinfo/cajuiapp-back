@@ -9,6 +9,7 @@ import com.br.ifnmg.cajuiapp.graduacao.models.Contrato;
 import com.br.ifnmg.cajuiapp.graduacao.repository.ContratoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,6 +29,12 @@ public class ContratoResource {
     public @ResponseBody Iterable listaContratos(){
         Iterable<Contrato> listaContratos = er.findAll();
         return listaContratos;
+    }
+    
+     @GetMapping(produces="application/json", value="aluno/{aId}")
+    public Contrato listaContratoDoAluno(@PathVariable("aId") Integer aId){
+        Contrato listarContratoDoAluno = er.listarContratoDoAluno(aId);
+        return listarContratoDoAluno;
     }
    
     

@@ -47,7 +47,7 @@ public class RecuperacaoResource {
     
     @PreAuthorize("hasAnyRole('PROFESSOR')")
     @PostMapping()
-    public Recuperacao cadastrarAvaliacao(@RequestBody @Valid Recuperacao recuperacao){
+    public Recuperacao cadastrarRecuperacao(@RequestBody @Valid Recuperacao recuperacao){
         return er.save(recuperacao);
     }
     
