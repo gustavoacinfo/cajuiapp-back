@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.Query;
  */
 public interface ContratoRepository extends JpaRepository<Contrato, String>{
     
-    @Query(value="select * from graduacao.contrato as co where co.aluno_id = ?",nativeQuery=true)
+    @Query(value="select * from graduacao.contrato as co where co.aluno_id = ? and co.fechado = 'false'",nativeQuery=true)
     public Contrato listarContratoDoAluno(Integer alunoId);
     
 }
