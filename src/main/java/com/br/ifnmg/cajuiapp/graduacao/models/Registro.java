@@ -26,7 +26,7 @@ import javax.persistence.Table;
 public class Registro implements Serializable {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
     
     @OneToOne

@@ -18,7 +18,7 @@ public interface MatriculaRepository extends JpaRepository<Matricula, String> {
     
     @Query(value="select * from graduacao.matricula as m join graduacao.oferta as o on m.oferta_id = o.id join graduacao.contrato as c\n" +
 "on m.contrato_id = c.id join basico.aluno as al on c.aluno_id = al.id join basico.pessoa as p on al.id = p.id\n" +
-"where o.id = ? order by p.nome ",nativeQuery=true)
+"where o.id = ? and m.estado_matricula = 'MATRICULADO' order by p.nome ",nativeQuery=true)
     public List<Matricula> listarMatriculasDaOferta(Integer id);
     
     @Query(value="select * from graduacao.matricula as ma join graduacao.contrato as con on con.id = ma.contrato_id\n" +
